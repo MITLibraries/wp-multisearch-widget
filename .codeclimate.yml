@@ -19,6 +19,8 @@ engines:
         enabled: false
       PSR1 Files SideEffects FoundWithSymbols:
         enabled: false
+      PSR2 Classes ClassDeclaration OpenBraceNewLine:
+        enabled: false
       PSR2 ControlStructures ControlStructureSpacing SpacingAfterOpenBrace:
         enabled: false
       PSR2 ControlStructures ControlStructureSpacing SpaceBeforeCloseBrace:
@@ -26,6 +28,8 @@ engines:
       PSR2 Methods FunctionCallSignature SpaceAfterOpenBracket:
         enabled: false
       PSR2 Methods FunctionCallSignature SpaceBeforeCloseBracket:
+        enabled: false
+      Squiz Classes ValidClassName NotCamelCaps:
         enabled: false
       Squiz ControlStructures ForLoopDeclaration SpacingAfterOpen:
         enabled: false
