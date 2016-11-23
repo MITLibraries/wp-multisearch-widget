@@ -28,6 +28,8 @@
  * along with Multisearch Widget. If not, see {URI to Plugin License}.
  */
 
+namespace mitlib;
+
 // Don't call the file directly!
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -36,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Defines base widget.
  */
-class Multisearch_Widget extends WP_Widget {
+class Multisearch_Widget extends \WP_Widget {
 
 	/**
 	 * Constructor
@@ -67,6 +69,6 @@ class Multisearch_Widget extends WP_Widget {
  * Registers base widget.
  */
 function register_multisearch_widget() {
-	register_widget( 'Multisearch_Widget' );
+	register_widget( 'mitlib\Multisearch_Widget' );
 }
-add_action( 'widgets_init', 'register_multisearch_widget' );
+add_action( 'widgets_init', 'mitlib\register_multisearch_widget' );
