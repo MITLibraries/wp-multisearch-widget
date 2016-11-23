@@ -1,31 +1,31 @@
 <?php
 /**
- * Plugin Name: Plugin Template
- * Plugin URI: https://github.com/MITLibraries/wp-plugin-template
- * Description: This is a sample plugin
- * Version: 1.0-beta7
+ * Plugin Name: Multisearch Widget
+ * Plugin URI: https://github.com/MITLibraries/wp-multisearch-widget
+ * Description: This plugin provides a widget that provides searches against multiple targets.
+ * Version: 0.1.0
  * Author: Matt Bernhardt
  * Author URI: https://github.com/matt-bernhardt
  * License: GPL2
  *
  * @package Plugin Template
  * @author Matt Bernhardt
- * @link https://github.com/MITLibraries/wp-plugin-template
+ * @link https://github.com/MITLibraries/wp-multisearch-widget
  */
 
 /**
- * {Plugin Name} is free software: you can redistribute it and/or modify
+ * Multisearch Widget is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2 of the License, or
  * any later version.
  *
- * {Plugin Name} is distributed in the hope that it will be useful,
+ * Multisearch Widget is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with {Plugin Name}. If not, see {URI to Plugin License}.
+ * along with Multisearch Widget. If not, see {URI to Plugin License}.
  */
 
 // Don't call the file directly!
@@ -36,17 +36,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Defines base widget.
  */
-class Plugin_Template extends WP_Widget {
+class Multisearch_Widget extends WP_Widget {
 
 	/**
 	 * Constructor
 	 */
 	function __construct() {
 		$widget_ops = array(
-			'classname' => 'plugin-template-widget',
-			'description' => __( 'Template class for plugin', 'plugintemplate' ),
+			'classname' => 'multisearch-widget',
+			'description' => __( 'Search widget for multiple targets', 'plugintemplate' ),
 		);
-		parent::__construct( 'plugin-template', __( 'Base Widget Template', 'plugintemplate' ), $widget_ops );
+		parent::__construct( 'multisearch', __( 'MultiSearch', 'plugintemplate' ), $widget_ops );
 	}
 
 	/**
@@ -59,7 +59,7 @@ class Plugin_Template extends WP_Widget {
 	function widget( $args, $instance ) {
 		$args = null;
 		$instance = null;
-		echo '<p>This is my widget.</p>';
+		echo '<p>This is the multisearch widget.</p>';
 	}
 }
 
@@ -67,34 +67,6 @@ class Plugin_Template extends WP_Widget {
  * Registers base widget.
  */
 function register_template_widget() {
-	register_widget( 'Plugin_Template' );
+	register_widget( 'Multisearch_Widget' );
 }
 add_action( 'widgets_init', 'register_template_widget' );
-
-/**
- * Stretch goal: This defines an extended widget, which overrides specific
- * methods of the base class. This is the heart of the "child plugin"
- * concept.
- */
-class Plugin_Template_Extension extends Plugin_Template {
-
-	/**
-	 * Widget() builds the output.
-	 *
-	 * @param array $args no idea.
-	 * @param array $instance no idea.
-	 */
-	function widget( $args, $instance ) {
-		$args = null;
-		$instance = null;
-		echo '<p>This is my <em>extended</em> widget.</p>';
-	}
-}
-
-/**
- * Registers extended widget.
- */
-function register_extended_widget() {
-	register_widget( 'Plugin_Template_Extension' );
-}
-add_action( 'widgets_init', 'register_extended_widget' );
