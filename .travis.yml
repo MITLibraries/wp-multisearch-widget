@@ -10,16 +10,31 @@ language: php
 
 # Declare versions of PHP to use. Use one decimal max.
 php:
-    # 5.4
+    - 5.4
     - 5.3
 
 # Declare which versions of WordPress to test against.
 # Also declare whether or not to test in Multisite.
 env:
-    - WP_VERSION=4.3 WP_MULTISITE=0
-    - WP_VERSION=4.3 WP_MULTISITE=1
-    - WP_VERSION=4.2 WP_MULTISITE=0
-    - WP_VERSION=4.2 WP_MULTISITE=1
+  # Trunk
+  # @link https://github.com/WordPress/WordPress
+  # WP_VERSION=master WP_MULTISITE=0
+  - WP_VERSION=master WP_MULTISITE=1
+  # WordPress 4.4
+  # @link https://github.com/WordPress/WordPress/tree/4.4-branch
+  # WP_VERSION=4.4 WP_MULTISITE=0
+  - WP_VERSION=4.4 WP_MULTISITE=1
+
+# Declare 5.4 beta in test matrix.
+# Based on https://buddypress.trac.wordpress.org/ticket/5620
+# @link http://docs.travis-ci.com/user/build-configuration/
+matrix:
+  include:
+    - php: 5.4
+      env: WP_VERSION=master
+  allow_failures:
+    - php: 5.4
+  fast_finish: true
 
 # Use this to prepare the system to install prerequisites or dependencies.
 # e.g. sudo apt-get update.
@@ -36,10 +51,10 @@ before_script:
     # Use the Git mirror of WordPress.
     - git clone --depth=1 --branch="$WP_VERSION" git://develop.git.wordpress.org/ $WP_DEVELOP_DIR
     # Set up theme information.
-    - theme_slug=$(basename $(pwd))
-    - theme_dir=$WP_DEVELOP_DIR/src/wp-content/themes/$theme_slug
+    - plugin_slug=$(basename $(pwd))
+    - plugin_dir=$WP_DEVELOP_DIR/src/wp-content/plugins/$plugin_slug
     - cd ..
-    - mv $theme_slug $theme_dir
+    - mv $plugin_slug $plugin_dir
     # Set up WordPress configuration.
     - cd $WP_DEVELOP_DIR
     - echo $WP_DEVELOP_DIR
@@ -59,7 +74,7 @@ before_script:
     # @link https://github.com/squizlabs/PHP_CodeSniffer/blob/4237c2fc98cc838730b76ee9cee316f99286a2a7/CodeSniffer.php#L1941
     - scripts/phpcs --config-set installed_paths ../wordpress-coding-standards
     # Hop into themes directory.
-    - cd $theme_dir
+    - cd $plugin_dir
     # After CodeSniffer install you should refresh your path.
     - phpenv rehash
     # Install actual unit tests.
@@ -79,8 +94,9 @@ script:
     # -v flag: Print verbose output.
     # -n flag: Do not print warnings. (shortcut for --warning-severity=0)
     # --standard: Use WordPress as the standard.
+    # --report: Generate summary table (source) and line-by-line output (full)
     # --extensions: Only sniff PHP files.
-    - $WP_DEVELOP_DIR/php-codesniffer/scripts/phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --extensions=php
+    - $WP_DEVELOP_DIR/php-codesniffer/scripts/phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --report=source --report=full  --extensions=php
     # phpunit
 
 # Receive notifications for build results.
