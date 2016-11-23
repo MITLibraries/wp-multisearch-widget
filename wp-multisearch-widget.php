@@ -8,7 +8,7 @@
  * Author URI: https://github.com/matt-bernhardt
  * License: GPL2
  *
- * @package Plugin Template
+ * @package Multisearch Widget
  * @author Matt Bernhardt
  * @link https://github.com/MITLibraries/wp-multisearch-widget
  */
@@ -44,9 +44,9 @@ class Multisearch_Widget extends WP_Widget {
 	function __construct() {
 		$widget_ops = array(
 			'classname' => 'multisearch-widget',
-			'description' => __( 'Search widget for multiple targets', 'plugintemplate' ),
+			'description' => __( 'Search widget for multiple targets', 'multisearch' ),
 		);
-		parent::__construct( 'multisearch', __( 'MultiSearch', 'plugintemplate' ), $widget_ops );
+		parent::__construct( 'multisearch', __( 'MultiSearch', 'multisearch' ), $widget_ops );
 	}
 
 	/**
@@ -66,7 +66,7 @@ class Multisearch_Widget extends WP_Widget {
 /**
  * Registers base widget.
  */
-function register_template_widget() {
+function register_multisearch_widget() {
 	register_widget( 'Multisearch_Widget' );
 }
-add_action( 'widgets_init', 'register_template_widget' );
+add_action( 'widgets_init', 'register_multisearch_widget' );
