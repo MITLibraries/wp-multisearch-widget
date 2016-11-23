@@ -41,7 +41,7 @@ class Multisearch_Widget extends WP_Widget {
 	/**
 	 * Constructor
 	 */
-	function __construct() {
+	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'multisearch-widget',
 			'description' => __( 'Search widget for multiple targets', 'multisearch' ),
@@ -56,7 +56,7 @@ class Multisearch_Widget extends WP_Widget {
 	 * @param array $instance See WP_Widget in Developer documentation.
 	 * @link https://developer.wordpress.org/reference/classes/wp_widget/
 	 */
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 		$args = null;
 		$instance = null;
 		echo '<p>This is the multisearch widget.</p>';
