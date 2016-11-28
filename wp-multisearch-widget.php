@@ -59,9 +59,45 @@ class Multisearch_Widget extends \WP_Widget {
 	 * @link https://developer.wordpress.org/reference/classes/wp_widget/
 	 */
 	public function widget( $args, $instance ) {
+		// Strip initial arguments.
 		$args = null;
 		$instance = null;
-		echo '<p>This is the multisearch widget.</p>';
+
+		// Register / enqueue javascript.
+		wp_enqueue_script( 'jquery-ui-tabs' );
+		wp_register_script(
+			'multisearch-js',
+			plugin_dir_url( __FILE__ ) . 'wp-multisearch-widget.js',
+			array( 'jquery-ui-tabs' ),
+			'0.1.0',
+			false
+		);
+		wp_enqueue_script( 'multisearch-js' );
+
+		// Render markup.
+		echo '<div id="multisearch">';
+		echo '<ul>
+			<li><a href="#fragment-1"><span>One</span></a></li>
+			<li><a href="#fragment-2"><span>Two</span></a></li>
+			<li><a href="#fragment-3"><span>Three</span></a></li>
+			</ul>';
+		echo '<div id="fragment-1">
+			<p>First tab is active by default:</p>
+			<pre><code>$( "#tabs" ).tabs(); </code></pre>
+			</div>';
+		echo '<div id="fragment-2">
+			Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+			laoreet dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+			diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+			</div>';
+		echo '<div id="fragment-3">
+			Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+			laoreet dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+			diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Lorem ipsum dolor sit
+			amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
+			erat volutpat.
+			</div>';
+		echo '</div>';
 	}
 }
 
