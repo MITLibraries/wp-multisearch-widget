@@ -109,6 +109,30 @@ class Multisearch_Widget extends \WP_Widget {
 			</div>';
 		echo '</div>';
 	}
+
+	/**
+	 * Back-end widget form
+	 *
+	 * @see WP_Widget::form()
+	 *
+	 * @param array $instance Previously saved values from database.
+	 */
+	public function form( $instance ) {
+		$instance = ''; // We can't have an empty method, for Reasons.
+	}
+
+	/**
+	 * Sanitize widget form values as they are saved.
+	 *
+	 * @see WP_Widget::form()
+	 *
+	 * @param array $new_instance Values just sent to be saved.
+	 * @param array $old_instance Previously saved values from database.
+	 */
+	public function update( $new_instance, $old_instance ) {
+		$old_instance = ''; // Discard old values.
+		return $new_instance;
+	}
 }
 
 /**
