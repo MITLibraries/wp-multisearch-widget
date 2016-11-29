@@ -74,28 +74,38 @@ class Multisearch_Widget extends \WP_Widget {
 		);
 		wp_enqueue_script( 'multisearch-js' );
 
+		// Register / enqueue styles.
+		wp_register_style( 'multisearch-tabs', plugin_dir_url( __FILE__ ) . 'wp-multisearch-widget.css' );
+		wp_enqueue_style( 'multisearch-tabs' );
+
 		// Render markup.
 		echo '<div id="multisearch">';
 		echo '<ul>
-			<li><a href="#fragment-1"><span>One</span></a></li>
-			<li><a href="#fragment-2"><span>Two</span></a></li>
-			<li><a href="#fragment-3"><span>Three</span></a></li>
+			<li><a href="#fragment-1"><span>All</span></a></li>
+			<li><a href="#fragment-2"><span>Books + Media</span></a></li>
+			<li><a href="#fragment-3"><span>Articles</span></a></li>
+			<li><a href="#fragment-4"><span>More...</span></a></li>
 			</ul>';
 		echo '<div id="fragment-1">
-			<p>First tab is active by default:</p>
+			<p>Not sure what you\'re looking for?</p>
 			<pre><code>$( "#tabs" ).tabs(); </code></pre>
 			</div>';
 		echo '<div id="fragment-2">
+			<p>Search books and other media</p>
 			Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
 			laoreet dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
 			diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
 			</div>';
 		echo '<div id="fragment-3">
+			<p>Search individual articles</p>
 			Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
 			laoreet dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
 			diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Lorem ipsum dolor sit
 			amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
 			erat volutpat.
+			</div>';
+		echo '<div id="fragment-4">
+			<p>Search the library website</p>
 			</div>';
 		echo '</div>';
 	}
