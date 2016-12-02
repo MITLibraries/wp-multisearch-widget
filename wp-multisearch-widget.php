@@ -81,32 +81,23 @@ class Multisearch_Widget extends \WP_Widget {
 		// Render markup.
 		echo '<div id="multisearch">';
 		echo '<ul>
-			<li><a href="#fragment-1"><span>All</span></a></li>
-			<li><a href="#fragment-2"><span>Books + Media</span></a></li>
-			<li><a href="#fragment-3"><span>Articles</span></a></li>
-			<li><a href="#fragment-4"><span>More...</span></a></li>
+			<li><a href="#search-all"><span>All</span></a></li>
+			<li><a href="#search-books"><span>Books + Media</span></a></li>
+			<li><a href="#search-articles"><span>Articles</span></a></li>
+			<li><a href="#search-more"><span>More...</span></a></li>
 			</ul>';
-		echo '<div id="fragment-1">
-			<p>Not sure what you\'re looking for?</p>
-			<pre><code>$( "#tabs" ).tabs(); </code></pre>
-			</div>';
-		echo '<div id="fragment-2">
-			<p>Search books and other media</p>
-			Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-			laoreet dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-			diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-			</div>';
-		echo '<div id="fragment-3">
-			<p>Search individual articles</p>
-			Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-			laoreet dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-			diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Lorem ipsum dolor sit
-			amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
-			erat volutpat.
-			</div>';
-		echo '<div id="fragment-4">
-			<p>Search the library website</p>
-			</div>';
+		echo '<div id="search-all">';
+		include( 'templates/tab_all.html' );
+		echo '</div>';
+		echo '<div id="search-books">';
+		include( 'templates/tab_books.html' );
+		echo '</div>';
+		echo '<div id="search-articles">';
+		include( 'templates/tab_articles.html' );
+		echo '</div>';
+		echo '<div id="search-more">';
+		include( 'templates/tab_more.html' );
+		echo '</div>';
 		echo '</div>';
 	}
 
