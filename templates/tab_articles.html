@@ -1,5 +1,5 @@
 <p>Search individual articles</p>
-<form action="https://search.ebscohost.com/login.aspx" method="get">
+<form action="https://search.ebscohost.com/login.aspx" id="eds" method="get">
 	<input name="direct" value="true" type="hidden">
 	<input name="scope" value="site" type="hidden">
 	<input name="site" value="eds-live" type="hidden">
@@ -7,8 +7,9 @@
 	<input name="custid" value="s8978330" type="hidden">
 	<input name="profile" value="eds" type="hidden">
 	<input name="groupid" value="main" type="hidden">
+	<input name="bquery" value="" type="hidden">
 	<div class="row">
-		<input type="text" name="bquery" placeholder="Search journal articles...">
+		<input type="text" name="uquery" placeholder="Search journal articles...">
 		<input type="submit">
 	</div>
 	<select name="limit">
@@ -18,3 +19,9 @@
 	</select>
 </form>
 <p>Also try: Browse journals by title, View article databases</p>
+<script type="text/javascript">
+jQuery('form#eds').on('submit', function(){
+	// Concatenate limiter and search query
+	this.bquery.value = (this.limit.value + this.uquery.value).replace(/"/g, '&quot;');
+});
+</script>
