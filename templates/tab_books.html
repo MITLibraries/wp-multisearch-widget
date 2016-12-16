@@ -1,10 +1,108 @@
-<p>Search books and other media</p>
-<form action="https://library.mit.edu/F/" method="get">
-	<input type="hidden" name="func" value="find-b">
-	<input type="hidden" name="find_code" value="WRD">
+<p>Search books and other media for</p>
+<form action="https://library.mit.edu/F/" method="get" id="booksearch">
+	<div class="hidden">
+		<input type="hidden" name="func" value="find-b">
+	</div>
 	<div class="row">
-		<input type="text" name="request" placeholder="Search books, films, music scores, maps...">
+		<input type="text" id="request" name="request" placeholder="Search books, films, music scores, maps...">
 		<input type="submit">
 	</div>
+	<select name="find_code" id="searchBy">
+		<option value="WRD" selected="selected">Keyword</option>
+		<option value="SCAN_TTL">Title (starts with)</option>
+		<option value="SCAN_AUT">Author (last name first)</option>
+		<option value="SCAN_CND">Call number (starts with)</option>
+	</select>
+	<ul>
+		<li><label><input type="radio" name="target" value="barton" checked="checked">MIT Catalog</label></li>
+		<li><label><input type="radio" name="target" value="worldcat">Libraries Worldwide</label></li>
+	</ul>
 </form>
-<p>Also try: <a href="/bartonplus">BartonPlus</a>, <a href="/barton-reserves">Course reserves</a>, <a href="/barton-theses">Thesis</a>, or <a href="#search-more">view more search options</a></p>
+<p>Also try: <a href="/bartonplus">BartonPlus</a>, <a href="/barton-reserves">Course reserves</a>, <a href="/barton-theses">Thesis</a>, or <a href="/search">view more search options</a></p>
+<script type="text/javascript">
+function clearHidden() {
+	// Clear hidden values from submitted form
+	jQuery( '#booksearch .hidden' ).html('');
+	jQuery( '#searchBy' ).html('');
+}
+
+function prepBarton() {
+	// Set form action
+	jQuery( '#booksearch' ).attr( 'action', 'https://library.mit.edu/F/' );
+
+	// Append Barton-specific hidden values
+	jQuery( '#booksearch .hidden' ).append( '<input type="hidden" name="func" value="find-b">' );
+
+	// Set query input name
+	jQuery( '#request' ).attr( 'name', 'request' );
+
+	// Append Barton-specific limiters
+	jQuery( '#searchBy' )
+		.attr( 'name', 'find_code' )
+		.append( '<option value="WRD" selected="selected">Keyword</option>' )
+		.append( '<option value="SCAN_TTL">Title (starts with)</option>' )
+		.append( '<option value="SCAN_AUT">Author (last name first)</option>' )
+		.append( '<option value="SCAN_CND">Call number (starts with)</option>' );
+
+};
+
+function prepWorldcat() {
+	// Set form action
+	jQuery( '#booksearch' ).attr( 'action', 'https://mit.worldcat.org/search' );
+
+	// Append Worldcat-specific hidden values
+	jQuery( '#booksearch .hidden' ).append( '<input type="hidden" name="qt" value="wc_org_mit"/>' );
+	jQuery( '#booksearch .hidden' ).append( '<input type="hidden" name="qt" value="affiliate"/>' );
+	jQuery( '#booksearch .hidden' ).append( '<input type="hidden" name="q" value=""/>' ); // Search placeholder
+
+	// Set query input name
+	jQuery( '#request' ).attr( 'name', 'request' );
+
+	// Append Worldcat-specific limiters
+	jQuery( '#searchBy' )
+		.attr( 'name', 'searchBy' )
+		.append( '<option value="" selected="selected">Keyword</option>' )
+		.append( '<option value="ti:">Title</option>' )
+		.append( '<option value="au:">Author</option>' );
+};
+
+jQuery( document ).ready( function() {
+	var target = jQuery( 'input[name="target"]:checked' ).val();
+
+	// Swap form settings as target changes
+	jQuery( 'input[name="target"]' ).change( function() {
+		clearHidden();
+		target = jQuery( 'input[name="target"]:checked' ).val();
+		if ( 'barton' == target ) {
+			prepBarton();
+		};
+		if ( 'worldcat' == target ) {
+			prepWorldcat();
+		}
+	});
+
+	// We mangle forms as necessary on submit.
+	jQuery( 'form#booksearch' ).on( 'submit', function(){
+		target = jQuery( 'input[name="target"]:checked' ).val();
+		if ( 'barton' == target ) {
+			// Barton searches that aren't 'keyword' searches need different field names / values
+			if ( 'WRD' === jQuery( '#searchBy' ).val() ) {
+				// WRD is a keyword search.
+				jQuery( '#searchBy' ).attr( 'name', 'find_code' );
+				jQuery( 'input[name=func]' ).attr( 'value', 'find-b' );
+			} else {
+				// Anything else needs a different set of fields
+				jQuery( '#searchBy' ).attr( 'name', 'find_scan_code' );
+				jQuery( 'input[name=func]' ).attr( 'value', 'find-e' );
+			}
+			return true;
+		}
+		if ( 'worldcat' == target ) {
+			// Worldcat prepends a code for search limiters, 
+			// so we compile those into the search placeholder field.
+			this.q.value = (this.searchBy.value + this.request.value);
+			return true;
+		}
+	});
+});
+</script>
