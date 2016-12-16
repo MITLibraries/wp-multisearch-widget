@@ -83,7 +83,7 @@ class Multisearch_Widget extends \WP_Widget {
 		echo '<ul>
 			<li><a href="#search-all"><span>All</span></a></li>
 			<li><a href="#search-books"><span>Books + Media</span></a></li>
-			<li><a href="#search-articles"><span>Articles</span></a></li>
+			<li><a href="#search-articles"><span>Journals + Articles</span></a></li>
 			<li><a href="#search-more"><span>More...</span></a></li>
 			</ul>';
 		echo '<div id="search-all">';
