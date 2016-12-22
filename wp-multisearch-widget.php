@@ -64,18 +64,28 @@ class Multisearch_Widget extends \WP_Widget {
 		$instance = null;
 
 		// Register / enqueue javascript.
-		wp_enqueue_script( 'jquery-ui-tabs' );
+		// First we add the responsive tabs plugin.
+		wp_register_script(
+			'responsivetabs-js',
+			plugin_dir_url( __FILE__ ) . 'libs/jquery.responsiveTabs.min.js',
+			array( 'jquery' ),
+			'1.6.1',
+			false
+		);
+		// Second, we add this plugin's javascript.
 		wp_register_script(
 			'multisearch-js',
 			plugin_dir_url( __FILE__ ) . 'wp-multisearch-widget.js',
-			array( 'jquery-ui-tabs' ),
+			array( 'responsivetabs-js' ),
 			'0.1.0',
 			false
 		);
+		// Finally, we enquey only this plugin's javascript (which brings everything else in).
 		wp_enqueue_script( 'multisearch-js' );
 
 		// Register / enqueue styles.
-		wp_register_style( 'multisearch-tabs', plugin_dir_url( __FILE__ ) . 'wp-multisearch-widget.css' );
+		wp_register_style( 'responsivetabs-css', plugin_dir_url( __FILE__ ) . 'libs/responsive-tabs.css' );
+		wp_register_style( 'multisearch-tabs', plugin_dir_url( __FILE__ ) . 'wp-multisearch-widget.css', array( 'responsivetabs-css' ) );
 		wp_enqueue_style( 'multisearch-tabs' );
 
 		// Render markup.
@@ -83,7 +93,7 @@ class Multisearch_Widget extends \WP_Widget {
 		echo '<ul>
 			<li><a href="#search-all"><span>All</span></a></li>
 			<li><a href="#search-books"><span>Books + Media</span></a></li>
-			<li><a href="#search-articles"><span>Articles</span></a></li>
+			<li><a href="#search-articles"><span>Journals + Articles</span></a></li>
 			<li><a href="#search-more"><span>More...</span></a></li>
 			</ul>';
 		echo '<div id="search-all">';

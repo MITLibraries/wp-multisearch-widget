@@ -1,3 +1,9 @@
 jQuery( document ).ready(function() {
-	jQuery("#multisearch").tabs();
+	var $tabs = $('#multisearch');
+	$tabs.responsiveTabs({
+		rotate: false,
+		startCollapsed: 'accordion',
+		collapsible: false,
+		setHash: false
+	});
 });
