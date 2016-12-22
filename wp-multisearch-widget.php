@@ -89,7 +89,10 @@ class Multisearch_Widget extends \WP_Widget {
 		wp_enqueue_style( 'multisearch-tabs' );
 
 		// Render markup.
-		echo '<div id="multisearch">';
+		echo '<noscript><p>It appears that your browser does not support javascript.</p>';
+		include( 'templates/form_worldcat.html' );
+		echo '</noscript>';
+		echo '<div id="multisearch" class="nojs">';
 		echo '<ul>
 			<li><a href="#search-all"><span>All</span></a></li>
 			<li><a href="#search-books"><span>Books + Media</span></a></li>
