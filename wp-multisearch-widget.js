@@ -9,6 +9,6 @@ jQuery( document ).ready(function() {
 		rotate: false,
 		startCollapsed: 'accordion',
 		collapsible: false,
-		setHash: false
+		setHash: true
 	});
 });
