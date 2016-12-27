@@ -8,10 +8,14 @@
 		<input type='hidden' name='param_jumpToPage_value' value='' />
 		<input type='hidden' name='param_services2filter_save' value='getAbstract' />
 		<input type='hidden' name='param_services2filter_save' value='getFullTxt' />
-		<input type="hidden" name="param_textSearchType_value" value="contains" />
 	</div>
 	<div class="row">
 		<input type="text" name="param_pattern_value" placeholder="Search databases...">
 		<input type="submit">
 	</div>
+	<select name="param_textSearchType_value">
+		<option value="contains">Partial words in title</option>
+		<option value="startsWith">Title starts with</option>
+		<option value="exactMatch">Exact title</option>
+	</select>
 </form>

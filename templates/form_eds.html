@@ -1,5 +1,5 @@
 <p>Search individual articles</p>
-<form action="https://search.ebscohost.com/login.aspx" id="eds" method="get">
+<form action="https://search.ebscohost.com/login.aspx" id="edssearch" method="get">
 	<div class="hidden">
 		<input name="direct" value="true" type="hidden">
 		<input name="scope" value="site" type="hidden">
@@ -8,10 +8,26 @@
 		<input name="custid" value="s8978330" type="hidden">
 		<input name="profile" value="eds" type="hidden">
 		<input name="groupid" value="main" type="hidden">
-		<input name="uquery" value="" type="hidden">
+		<input name="bquery" value="" type="hidden">
 	</div>
 	<div class="row">
-		<input type="text" name="bquery" placeholder="Search journal articles...">
+		<input type="text" name="uquery" placeholder="Search journal articles...">
 		<input type="submit">
 	</div>
+	<select name="limit">
+		<option value="">Keyword</option>
+		<option value="TI ">Title</option>
+		<option value="AU ">Author</option>
+	</select>
 </form>
+<script type="text/javascript">
+	jQuery( document ).ready( function() {
+		jQuery( 'form#edssearch' ).on( 'submit', function() {
+			// EDS prepends a code to the search string to enable title
+			// or author searching, so we assemble the search string on
+			// submit.
+			this.bquery.value = (this.limit.value + this.uquery.value);
+			return true;
+		});
+	});
+</script>

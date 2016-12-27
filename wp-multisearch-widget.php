@@ -94,7 +94,7 @@ class Multisearch_Widget extends \WP_Widget {
 
 		// Render markup.
 		echo '<noscript><p>It appears that your browser does not support javascript.</p>';
-		include( 'templates/form_worldcat.html' );
+		include( 'templates/form_nojs.html' );
 		echo '</noscript>';
 		echo '<div id="multisearch" class="nojs">';
 		echo '<ul>
