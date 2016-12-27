@@ -1,3 +1,13 @@
+<?php
+/**
+ * The search tab for "more" content - which will search the Google custom engine.
+ *
+ * @package Multisearch Widget
+ * @since 0.2.0
+ */
+
+?>
+
 <p>Search the library website</p>
 <form action="https://www.google.com/cse" method="get">
 	<input type="hidden" name="cx" value="016240528703941589557:i7wrbu9cdxu">

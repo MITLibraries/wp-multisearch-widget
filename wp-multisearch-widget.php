@@ -104,7 +104,7 @@ class Multisearch_Widget extends \WP_Widget {
 			<li><a href="#search-more"><span>More...</span></a></li>
 			</ul>';
 		echo '<div id="search-all">';
-		include( 'templates/tab_all.html' );
+		include( 'templates/tab-all.php' );
 		echo '</div>';
 		echo '<div id="search-books">';
 		include( 'templates/tab-books.php' );
@@ -113,7 +113,7 @@ class Multisearch_Widget extends \WP_Widget {
 		include( 'templates/tab-articles.php' );
 		echo '</div>';
 		echo '<div id="search-more">';
-		include( 'templates/tab_more.html' );
+		include( 'templates/tab-more.php' );
 		echo '</div>';
 		echo '</div>';
 	}
