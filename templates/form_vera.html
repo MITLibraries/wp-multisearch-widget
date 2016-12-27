@@ -1,0 +1,21 @@
+<p>Search databases.</p>
+<form action="https://owens.mit.edu/sfx_local/az/mit_all" method="get">
+	<div class="hidden">
+		<input type='hidden' name='param_perform_save' value='searchTitle' />
+		<input type='hidden' name='param_chinese_checkbox_save' value='0' />
+		<input type='hidden' name='param_type_save' value='textSearch' />
+		<input type='hidden' name='param_type_value' value='textSearch' />
+		<input type='hidden' name='param_jumpToPage_value' value='' />
+		<input type='hidden' name='param_services2filter_save' value='getAbstract' />
+		<input type='hidden' name='param_services2filter_save' value='getFullTxt' />
+	</div>
+	<div class="row">
+		<input type="text" name="param_pattern_value" placeholder="Search databases...">
+		<input type="submit">
+	</div>
+	<select name="param_textSearchType_value">
+		<option value="contains">Partial words in title</option>
+		<option value="startsWith">Title starts with</option>
+		<option value="exactMatch">Exact title</option>
+	</select>
+</form>

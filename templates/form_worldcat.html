@@ -1,0 +1,28 @@
+<p>Search books and other media worldwide.</p>
+<form action="https://mit.worldcat.org/search" method="get" id="booksearch">
+	<div class="hidden">
+		<input type="hidden" name="qt" value="wc_org_mit">
+		<input type="hidden" name="qt" value="affiliate">
+		<input type="hidden" name="q">
+	</div>
+	<div class="row">
+		<input type="text" class="request" name="search" placeholder="Search books, films, music scores, maps...">
+		<input type="submit">
+	</div>
+	<select name="type">
+		<option value="">Keyword</option>
+		<option value="ti:">Title</option>
+		<option value="au:">Author</option>
+	</select>
+</form>
+<script type="text/javascript">
+	jQuery( document ).ready( function() {
+		jQuery( 'form#booksearch' ).on( 'submit', function() {
+			// Worldcat prepends a code to the search string to enable title
+			// or author searching, so we assemble the search string on
+			// submit.
+			this.q.value = (this.type.value + this.search.value);
+			return true;
+		});
+	});
+</script>
