@@ -1,5 +1,5 @@
 <p>Search databases.</p>
-<form action="https://owens.mit.edu/sfx_local/az/mit_all" method="get">
+<form action="https://owens.mit.edu/sfx_local/az/mit_all" method="get" id="verasearch" data-target="vera">
 	<div class="hidden">
 		<input type='hidden' name='param_perform_save' value='searchTitle' />
 		<input type='hidden' name='param_chinese_checkbox_save' value='0' />
@@ -19,3 +19,11 @@
 		<option value="exactMatch">Exact title</option>
 	</select>
 </form>
+<script type="text/javascript">
+	jQuery( document ).ready( function() {
+		jQuery( 'form#verasearch' ).on( 'submit', function() {
+			// Log search details
+			logSearch( this );
+		});
+	});
+</script>

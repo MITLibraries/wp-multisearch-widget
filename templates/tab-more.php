@@ -9,7 +9,7 @@
 ?>
 
 <p>Search the library website</p>
-<form action="https://www.google.com/cse" method="get">
+<form action="https://www.google.com/cse" method="get" data-target="google">
 	<input type="hidden" name="cx" value="016240528703941589557:i7wrbu9cdxu">
 	<input type="hidden" name="ie" value="UTF-8">
 	<input type="text" name="q" placeholder="Search our site, location, guides, and support">

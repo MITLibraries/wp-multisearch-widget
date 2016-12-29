@@ -9,7 +9,7 @@
 ?>
 
 <p>Not sure what you're looking for?</p>
-<form action="https://lib.mit.edu/search/bento" method="get">
+<form action="https://lib.mit.edu/search/bento" method="get" data-target="bento">
 	<input type="text" name="q" placeholder="Search books, journal titles, films...">
 	<input type="submit">
 </form>
