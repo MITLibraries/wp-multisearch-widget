@@ -116,6 +116,17 @@ class Multisearch_Widget extends \WP_Widget {
 		include( 'templates/tab-more.php' );
 		echo '</div>';
 		echo '</div>';
+
+		// Google analytics script (this has to be here so we can pull GA property from server).
+		echo "<script type='text/javascript'>
+			// Register analytics target
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','discovery');
+			discovery('create', '"UA-1760176-32"', 'auto');
+			discovery('send', 'pageview');
+		</script>";
 	}
 
 	/**
