@@ -61,7 +61,6 @@ class Multisearch_Widget extends \WP_Widget {
 	public function widget( $args, $instance ) {
 		// Strip initial arguments.
 		$args = null;
-		$instance = null;
 
 		// Register / enqueue javascript.
 		// First we add the responsive tabs plugin.
@@ -124,7 +123,7 @@ class Multisearch_Widget extends \WP_Widget {
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 			})(window,document,'script','https://www.google-analytics.com/analytics.js','discovery');
-			discovery('create', '"UA-1760176-32"', 'auto');
+			discovery('create', '" . esc_attr( $instance['ga_property'] ) . "', 'auto');
 			discovery('send', 'pageview');
 		</script>";
 	}
@@ -137,7 +136,20 @@ class Multisearch_Widget extends \WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-		$instance = ''; // We can't have an empty method, for Reasons.
+		$ga_property = $instance['ga_property'];
+		?>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'ga_property' ) ); ?>">
+				<?php esc_attr_e( 'Google Analtyics Property' ); ?>
+			</label>
+			<input
+				class="widefat"
+				id="<?php echo esc_attr( $this->get_field_id( 'ga_property' ) ); ?>"
+				type="text"
+				name="<?php echo esc_attr( $this->get_field_name( 'ga_property' ) ); ?>"
+				value="<?php echo esc_html( $ga_property ); ?>">
+		</p>
+		<?php
 	}
 
 	/**
@@ -149,8 +161,9 @@ class Multisearch_Widget extends \WP_Widget {
 	 * @param array $old_instance Previously saved values from database.
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$old_instance = ''; // Discard old values.
-		return $new_instance;
+		$instance = $old_instance;
+		$instance['ga_property'] = $new_instance['ga_property'];
+		return $instance;
 	}
 }
 
