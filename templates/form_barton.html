@@ -1,5 +1,5 @@
 <p>Search books and other media at MIT.</p>
-<form action="https://library.mit.edu/F/" method="get" id="bartonsearch">
+<form action="https://library.mit.edu/F/" method="get" id="bartonsearch" data-target="barton">
 	<div class="hidden">
 		<input type="hidden" name="func" value="find-b">
 	</div>
@@ -25,6 +25,10 @@
 				this.func.value = 'find-e';
 				this.find_code.name = 'find_scan_code';
 			}
+
+			// Log search details
+			logSearch( this );
+
 			return true;
 		});
 	});

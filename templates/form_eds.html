@@ -1,5 +1,5 @@
 <p>Search individual articles</p>
-<form action="https://search.ebscohost.com/login.aspx" id="edssearch" method="get">
+<form action="https://search.ebscohost.com/login.aspx" id="edssearch" method="get" data-target="eds">
 	<div class="hidden">
 		<input name="direct" value="true" type="hidden">
 		<input name="scope" value="site" type="hidden">
@@ -27,6 +27,10 @@
 			// or author searching, so we assemble the search string on
 			// submit.
 			this.bquery.value = (this.limit.value + this.uquery.value);
+
+			// Log search details
+			logSearch( this );
+
 			return true;
 		});
 	});

@@ -1,5 +1,5 @@
 <p>Search books and other media worldwide.</p>
-<form action="https://mit.worldcat.org/search" method="get" id="booksearch">
+<form action="https://mit.worldcat.org/search" method="get" id="booksearch" data-target="worldcat">
 	<div class="hidden">
 		<input type="hidden" name="qt" value="wc_org_mit">
 		<input type="hidden" name="qt" value="affiliate">
@@ -22,6 +22,10 @@
 			// or author searching, so we assemble the search string on
 			// submit.
 			this.q.value = (this.type.value + this.search.value);
+
+			// Log search details
+			logSearch( this );
+
 			return true;
 		});
 	});
