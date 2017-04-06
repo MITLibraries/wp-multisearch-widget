@@ -2,7 +2,7 @@
 # @link https://travis-ci.org/
 
 # For use with the MIT Libraries' plugin template.
-# @link https://github.com/MITLibraries/wp-plugin-template
+# @link https://github.com/MITLibraries/wp-multisearch-widget
 
 # Declare project language.
 # @link http://about.travis-ci.org/docs/user/languages/php/
@@ -10,8 +10,12 @@ language: php
 
 # Declare versions of PHP to use. Use one decimal max.
 php:
-    - 5.4
-    - 5.3
+  # aliased to a recent 7.1.x version
+  - "7.1"
+  # aliased to a recent 5.6.x version
+  - "5.6"
+  # aliased to a recent 5.3.x version
+  - "5.3"
 
 # Declare which versions of WordPress to test against.
 # Also declare whether or not to test in Multisite.
@@ -20,20 +24,19 @@ env:
   # @link https://github.com/WordPress/WordPress
   # WP_VERSION=master WP_MULTISITE=0
   - WP_VERSION=master WP_MULTISITE=1
-  # WordPress 4.4
-  # @link https://github.com/WordPress/WordPress/tree/4.4-branch
-  # WP_VERSION=4.4 WP_MULTISITE=0
-  - WP_VERSION=4.4 WP_MULTISITE=1
+  # WordPress 4.7
+  # @link https://github.com/WordPress/WordPress/tree/4.7-branch
+  # WP_VERSION=4.7 WP_MULTISITE=0
+  - WP_VERSION=4.7 WP_MULTISITE=1
 
-# Declare 5.4 beta in test matrix.
-# Based on https://buddypress.trac.wordpress.org/ticket/5620
+# Declare "future" releases to be acceptable failures.
+# @link https://buddypress.trac.wordpress.org/ticket/5620
 # @link http://docs.travis-ci.com/user/build-configuration/
 matrix:
-  include:
-    - php: 5.4
-      env: WP_VERSION=master
   allow_failures:
-    - php: 5.4
+    - php: "7.1"
+    - php: "5.6"
+    - env: WP_VERSION=master WP_MULTISITE=1
   fast_finish: true
 
 # Use this to prepare the system to install prerequisites or dependencies.
