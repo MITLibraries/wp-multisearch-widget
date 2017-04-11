@@ -8,22 +8,23 @@
  */
 
 ?>
-
+<p>Books, ebooks, audio books, music, and videos</p>
 <div class="panel"></div>
 <ul id="books-target">
-	<li><label><input type="radio" name="books-target" value="barton">Barton</label></li>
-	<li><label><input type="radio" name="books-target" value="worldcat" checked="checked">Worldcat</label></li>
+	<li><label><input type="radio" name="books-target" value="localbooks">at MIT</label></li>
+	<li>
+		<label><input type="radio" name="books-target" value="worldcat" checked="checked">libraries worldwide</label>
+	</li>
 </ul>
 <p>Also try:
-	<a href="/bartonplus">BartonPlus</a>,
-	<a href="/barton-reserves">Course reserves</a>,
-	<a href="/barton-theses">Thesis</a>, or
-	<a href="#search-more">view more search options</a>
+	<a href="/barton">Barton Classic</a>,
+	<a href="/barton-theses">Theses</a>, or
+	<a href="/barton-reserves">Course reserves</a>
 </p>
 <script type="text/javascript">
 function loadBooksForm(choice,panel) {
-	if ( 'barton' === choice ) {
-		jQuery(panel).load("<?php echo esc_url( plugin_dir_url( __FILE__ ) ); ?>form_barton.html");
+	if ( 'localbooks' === choice ) {
+		jQuery(panel).load("<?php echo esc_url( plugin_dir_url( __FILE__ ) ); ?>form_localbooks.html");
 	} else {
 		jQuery(panel).load("<?php echo esc_url( plugin_dir_url( __FILE__ ) ); ?>form_worldcat.html");
 	}

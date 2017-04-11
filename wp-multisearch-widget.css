@@ -10,3 +10,12 @@
 .r-tabs-state-active {
 	background-color: #ccc;
 }
+#multisearch input[type="text"] {
+	width: 80%;
+}
+#multisearch select {
+	width: 80%;
+	padding: 0.428571rem;
+	color: #111;
+	border-radius: 3px;
+}

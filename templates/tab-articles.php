@@ -8,35 +8,40 @@
  */
 
 ?>
-
-<div class="panel"></div>
-<ul id="articles-target">
-	<li><label><input type="radio" name="articles-target" value="eds" checked="checked">EDS</label></li>
-	<li><label><input type="radio" name="articles-target" value="vera">Vera</label></li>
-</ul>
-<p>Also try: Browse journals by title, View article databases</p>
+<p>Search journals and articles</p>
+<form action="https://widgets.ebscohost.com/prod/search/" id="edssearch" method="get" data-target="eds">
+	<div class="hidden">
+		<input name="direct" value="true" type="hidden">
+		<input name="authtype" value="ip,guest" type="hidden">
+		<input name="type" value="0" type="hidden">
+		<input name="groupid" value="main" type="hidden">
+		<input name="site" value="eds-live" type="hidden">
+		<input name="profile" value="eds" type="hidden">
+		<input name="custid" value="s8978330" type="hidden">
+		<input name="bquery" value="" type="hidden">
+		<input name="facet" value="AcademicJournals,Magazines" type="hidden">
+	</div>
+	<input type="text" name="uquery" placeholder="Search journals and articles...">
+	<select name="limit">
+		<option value="">Keyword</option>
+		<option value="TI ">Title</option>
+		<option value="AU ">Author</option>
+	</select>
+	<input type="submit" value="Search">
+</form>
 <script type="text/javascript">
-function loadArticlesForm(choice,panel) {
-	if ( 'vera' === choice ) {
-		jQuery(panel).load("<?php echo esc_url( plugin_dir_url( __FILE__ ) ); ?>form_vera.html");
-	} else {
-		jQuery(panel).load("<?php echo esc_url( plugin_dir_url( __FILE__ ) ); ?>form_eds.html");
-	}
-}
+	jQuery( document ).ready( function() {
+		jQuery( 'form#edssearch' ).on( 'submit', function() {
+			// EDS prepends a code to the search string to enable title
+			// or author searching, so we assemble the search string on
+			// submit.
+			this.bquery.value = (this.limit.value + this.uquery.value);
 
-jQuery( document ).ready( function() {
-	// Set default form to Worldcat
-	var atarget = jQuery("#articles-target input[name=articles-target]:checked").val();
-	var apanel = jQuery("#search-articles .panel");
+			// Log search details
+			logSearch( this );
 
-	// Load default form (set in markup)
-	loadArticlesForm( atarget, apanel );
-
-	// Detect target change, swap forms as needed
-	jQuery("#articles-target input[name=articles-target]").on('change',function() {
-		loadArticlesForm( this.value, apanel );
+			return true;
+		});
 	});
-});
-
-
 </script>
+<p>Also try: <a href="/vera">Vera: journals and databases</a></p>
