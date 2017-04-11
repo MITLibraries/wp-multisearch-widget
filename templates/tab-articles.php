@@ -8,8 +8,7 @@
  */
 
 ?>
-<p>Search journals and articles</p>
-<form action="https://widgets.ebscohost.com/prod/search/" id="edssearch" method="get" data-target="eds">
+<form class="form search-articles" action="https://widgets.ebscohost.com/prod/search/" id="edssearch" method="get" data-target="eds">
 	<div class="hidden">
 		<input name="direct" value="true" type="hidden">
 		<input name="authtype" value="ip,guest" type="hidden">
@@ -21,13 +20,17 @@
 		<input name="bquery" value="" type="hidden">
 		<input name="facet" value="AcademicJournals,Magazines" type="hidden">
 	</div>
-	<input type="text" name="uquery" placeholder="Search journals and articles...">
-	<select name="limit">
-		<option value="">Keyword</option>
-		<option value="TI ">Title</option>
-		<option value="AU ">Author</option>
-	</select>
-	<input type="submit" value="Search">
+	<label for="searchinput-article">Search journals and articles</label>
+	<input class="field field-text" type="text" id="searchinput-article" name="uquery" placeholder="Search journals and articles...">
+	<div class="field-wrap-select">
+		<label class="sr" for="searchlimit-articles">limit to</label>
+		<select class="field field-select" name="limit" id="searchlimit-articles">
+			<option value="">Keyword</option>
+			<option value="TI ">Title</option>
+			<option value="AU ">Author</option>
+		</select>
+	</div>
+	<input class="button button-search" type="submit" value="Search">
 </form>
 <script type="text/javascript">
 	jQuery( document ).ready( function() {
@@ -44,4 +47,4 @@
 		});
 	});
 </script>
-<p>Also try: <a href="/vera">Vera: journals and databases</a></p>
+<p class="also">Also try: <a href="/vera">Vera: journals and databases</a></p>

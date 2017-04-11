@@ -8,15 +8,16 @@
  */
 
 ?>
-<p>Books, ebooks, audio books, music, and videos</p>
 <div class="panel"></div>
-<ul id="books-target">
-	<li><label><input type="radio" name="books-target" value="localbooks">at MIT</label></li>
+<ul id="books-target" class="select-books-target">
+	<li>
+		<label><input type="radio" name="books-target" value="localbooks">at MIT</label>
+	</li>
 	<li>
 		<label><input type="radio" name="books-target" value="worldcat" checked="checked">libraries worldwide</label>
 	</li>
 </ul>
-<p>Also try:
+<p class="also">Also try:
 	<a href="/barton">Barton Classic</a>,
 	<a href="/barton-theses">Theses</a>, or
 	<a href="/barton-reserves">Course reserves</a>

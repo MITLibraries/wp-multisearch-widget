@@ -68,7 +68,7 @@ class Multisearch_Widget extends \WP_Widget {
 		echo '<noscript><p>It appears that your browser does not support javascript.</p>';
 		include( 'templates/form_nojs.html' );
 		echo '</noscript>';
-		echo '<div id="multisearch" class="nojs">';
+		echo '<div id="multisearch" class="wrap-search nojs">';
 		echo '<ul>
 			<li><a href="#search-all"><span>All</span></a></li>
 			<li><a href="#search-books"><span>Books + media</span></a></li>
