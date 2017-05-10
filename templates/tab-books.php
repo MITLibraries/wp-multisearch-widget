@@ -8,14 +8,12 @@
  */
 
 ?>
+<ul id="books-target" class="select-books-target">
+	<li><button class="button-search" data-target="localbooks" data-default="true">at MIT</button></li>
+	<li><button class="button-search" data-target="worldcat">libraries worldwide</button></li>
+</ul>
 <p>Books, ebooks, audio books, music, and videos</p>
 <div class="panel"></div>
-<ul id="books-target">
-	<li><label><input type="radio" name="books-target" value="localbooks">at MIT</label></li>
-	<li>
-		<label><input type="radio" name="books-target" value="worldcat" checked="checked">libraries worldwide</label>
-	</li>
-</ul>
 <p>Also try:
 	<a href="/barton">Barton Classic</a>,
 	<a href="/barton-theses">Theses</a>, or
@@ -32,15 +30,15 @@ function loadBooksForm(choice,panel) {
 
 jQuery( document ).ready( function() {
 	// Set default form to Worldcat
-	var btarget = jQuery("#books-target input[name=books-target]:checked").val();
+	var btarget = jQuery("#books-target .button-search[data-default='true']").data('target');
 	var bpanel = jQuery("#search-books .panel");
 
 	// Load default form (set in markup)
 	loadBooksForm( btarget, bpanel );
 
 	// Detect target change, swap forms as needed
-	jQuery("#books-target input[name=books-target]").on('change',function() {
-		loadBooksForm( this.value, bpanel );
+	jQuery("#books-target .button-search").on('click',function() {
+		loadBooksForm( jQuery(this).data('target'), bpanel );
 	});
 
 });
