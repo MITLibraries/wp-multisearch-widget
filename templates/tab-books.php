@@ -11,10 +11,8 @@
 <p>Books, ebooks, audio books, music, and videos</p>
 <div class="panel"></div>
 <ul id="books-target">
-	<li><label><input type="radio" name="books-target" value="localbooks">at MIT</label></li>
-	<li>
-		<label><input type="radio" name="books-target" value="worldcat" checked="checked">libraries worldwide</label>
-	</li>
+	<li><label><input type="radio" name="books-target" value="localbooks" checked="checked">at MIT</label></li>
+	<li><label><input type="radio" name="books-target" value="worldcat">libraries worldwide</label></li>
 </ul>
 <p>Also try:
 	<a href="/barton">Barton Classic</a>,
