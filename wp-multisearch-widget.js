@@ -29,7 +29,7 @@ jQuery( document ).ready(function() {
 	// Call Responsive Tabs plugin.
 	$tabs.responsiveTabs({
 		rotate: false,
-		startCollapsed: 'accordion',
+		startCollapsed: false,
 		collapsible: false,
 		setHash: true
 	});
