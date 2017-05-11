@@ -1,16 +1,20 @@
-<form action="https://mit.worldcat.org/search" method="get" id="booksearch" data-target="worldcat">
+<form class="form search-booksworld" action="https://mit.worldcat.org/search" method="get" id="booksearch" data-target="worldcat">
 	<div class="hidden">
 		<input type="hidden" name="qt" value="wc_org_mit">
 		<input type="hidden" name="qt" value="affiliate">
 		<input type="hidden" name="q">
 	</div>
-	<input type="text" class="request" name="search" placeholder="Search books, films, music scores...">
-	<select name="limit">
-		<option value="">Keyword</option>
-		<option value="ti:">Title</option>
-		<option value="au:">Author</option>
-	</select>
-	<input type="submit" value="Search">
+	<label for="searchinput-booksworld">Search for books, ebooks, audio books, music, and videos</label>
+	<input class="request field field-text" type="text" id="searchinput-booksworld" name="search" placeholder="Search books, films, music scores...">
+	<div class="field-wrap-select">
+		<label class="sr" for="searchlimit-booksworld">limit to</label>
+		<select class="field field-select" name="limit" id="searchlimit-booksworld">
+			<option value="">Keyword</option>
+			<option value="ti:">Title</option>
+			<option value="au:">Author</option>
+		</select>
+	</div>
+	<input class="button button-search" type="submit" value="Search">
 </form>
 <script type="text/javascript">
 	jQuery( document ).ready( function() {

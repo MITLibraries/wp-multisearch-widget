@@ -8,29 +8,37 @@
 
 ?>
 
-<div class="flex-container">
-	<div class="col-1">
-		<p>Looking for something else?</p>
+<div class="wrap-3cols">
+	<div class="col col-1">
+		<h3 class="header-col">Looking for something else?</h3>
 		<ul>
 			<li><a href="/barton-reserves">Course reserves</a></li>
 			<li><a href="/barton-theses">Theses</a></li>
 			<li><a href="https://dspace.mit.edu">DSpace@MIT</a></li>
+			<li><a href="http://libraries.mit.edu/experts/">Subject guides</a></li>
 			<li><a href="/search">More search options: images, data, etc.</a></li>
 		</ul>
 	</div>
-	<div class="col-2">
-		<p>Other useful tools</p>
+	<div class="col col-2">
+		<h3 class="header-col">Other useful tools</h3>
 		<ul>
 			<li><a href="/libx">LibX browser plug-in</a></li>
 			<li><a href="http://libguides.mit.edu/google/googlescholar">Google Scholar for MIT</a></li>
-			<li><a href="/ask">Ask Us: chat and email</a></li>
 		</ul>
 	</div>
+	<div class="col col-3">
+		<p class="wrap-askus">
+			<a class="askus-link" href="https://libraries.mit.edu/ask">
+				<span class="askus-name">Ask Us</span> 
+				<span class="askus-desc">chat and email</span>
+			</a>
+		</p>
+	</div>
 </div>
-<p>Search the library website</p>
-<form action="https://www.google.com/cse" method="get" data-target="google">
+<form class="form search-site" action="https://www.google.com/cse" method="get" data-target="google">
 	<input type="hidden" name="cx" value="016240528703941589557:i7wrbu9cdxu">
 	<input type="hidden" name="ie" value="UTF-8">
-	<input type="text" name="q" placeholder="Search our site, location, guides, and support">
-	<input type="submit" name="sa" value="Search">
+	<label for="searchinput-site">Search the library website</label>
+	<input id="searchinput-site" class="field field-text" type="text" name="q" placeholder="Search our site, location, guides, and support">
+	<input type="submit" class="button button-search" name="sa" value="Search">
 </form>

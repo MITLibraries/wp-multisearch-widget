@@ -8,8 +8,8 @@
 
 ?>
 
-<p>Search the libraries</p>
-<form action="https://lib.mit.edu/search/bento" method="get" data-target="bento">
-	<input type="text" name="q" placeholder="Search books, journal articles, films...">
-	<input type="submit" value="Search">
+<form class="form search-bento" action="https://lib.mit.edu/search/bento" method="get" data-target="bento">
+	<label for="searchinput-bento">Search the libraries</label>
+	<input class="field field-text" type="text" id="searchinput-bento" name="q" placeholder="Search books, journal articles, films...">
+	<input class="button button-search" type="submit" value="Search">
 </form>

@@ -1,4 +1,4 @@
-<form action="https://widgets.ebscohost.com/prod/search/" id="localbooksearch" method="get" data-target="eds">
+<form class="form search-bookslocal" action="https://widgets.ebscohost.com/prod/search/" id="localbooksearch" method="get" data-target="eds">
 	<div class="hidden">
 		<input name="direct" value="true" type="hidden">
 		<input name="authtype" value="ip,guest" type="hidden">
@@ -10,13 +10,17 @@
 		<input name="bquery" value="" type="hidden">
 		<input name="facet" value="Books,eBooks,Audiobooks,Dissertations,MusicScores,Audio,Videos" type="hidden">
 	</div>
-	<input type="text" name="uquery" placeholder="Search books, films, music scores...">
-	<select name="limit">
-		<option value="">Keyword</option>
-		<option value="TI ">Title</option>
-		<option value="AU ">Author</option>
-	</select>
-	<input type="submit" value="Search">
+	<label for="searchinput-bookslocal">Search for books, ebooks, audio books, music, and videos</label>
+	<input class="field field-text" type="text" name="uquery" id="searchinput-bookslocal"  placeholder="Search books, films, music scores...">
+	<div class="field-wrap-select">
+		<label class="sr" for="searchlimit-bookslocal">limit to</label>
+		<select class="field field-select" name="limit" id="searchlimit-bookslocal">
+			<option value="">Keyword</option>
+			<option value="TI ">Title</option>
+			<option value="AU ">Author</option>
+		</select>
+	</div>
+	<input class="button button-search" type="submit" value="Search">
 </form>
 <script type="text/javascript">
 	jQuery( document ).ready( function() {
