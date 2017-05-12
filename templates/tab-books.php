@@ -18,10 +18,6 @@
 			name="search"
 			placeholder="Search books, films, music scores..."
 			type="text">
-		<ul id="books-target" class="select-books-target">
-			<li><label><input type="radio" name="books-target" value="localbooks" checked="checked">at MIT</label></li>
-			<li><label><input type="radio" name="books-target" value="worldcat">libraries worldwide</label></li>
-		</ul>
 		<div class="field-wrap-select">
 			<label class="sr" for="searchlimit-bookslocal">limit to</label>
 			<select class="field field-select" id="searchlimit-bookslocal" name="limit">
@@ -30,6 +26,10 @@
 				<option value="AU">Author</option>
 			</select>
 		</div>
+		<ul id="books-target" class="select-books-target">
+			<li><label><input type="radio" name="books-target" value="localbooks" checked="checked">at MIT</label></li>
+			<li><label><input type="radio" name="books-target" value="worldcat">libraries worldwide</label></li>
+		</ul>
 		<input class="button button-search" type="submit" value="Search">
 	</form>
 </div>
