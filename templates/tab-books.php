@@ -45,6 +45,7 @@ function setBartonSearch(form) {
 
 	// Load hidden fields
 	jQuery(form).find(".hidden")
+		.empty()
 		.append('<input name="direct" value="true" type="hidden">')
 		.append('<input name="authtype" value="ip,guest" type="hidden">')
 		.append('<input name="type" value="0" type="hidden">')
@@ -67,6 +68,7 @@ function setWorldcatSearch(form) {
 
 	// Load hidden fields
 	jQuery(form).find(".hidden")
+		.empty()
 		.append('<input type="hidden" name="qt" value="wc_org_mit">')
 		.append('<input type="hidden" name="qt" value="affiliate">')
 		.append('<input type="hidden" name="q">');
