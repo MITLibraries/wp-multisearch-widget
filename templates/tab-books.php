@@ -8,21 +8,29 @@
  */
 
 ?>
-<p>Books, ebooks, audio books, music, and videos</p>
 <div class="panel">
-	<form action="" id="booksearch" method="get">
+	<form action="" id="booksearch" method="get" class="form search-bookslocal">
 		<div class="hidden"></div>
-		<input type="text" name="search" placeholder="Search books, films, music scores...">
+		<label for="searchinput-bookslocal">Search for books, ebooks, audio books, music, and videos</label>
+		<input
+			class="field field-text"
+			id="searchinput-bookslocal"
+			name="search"
+			placeholder="Search books, films, music scores..."
+			type="text">
 		<ul id="books-target" class="select-books-target">
 			<li><label><input type="radio" name="books-target" value="localbooks" checked="checked">at MIT</label></li>
 			<li><label><input type="radio" name="books-target" value="worldcat">libraries worldwide</label></li>
 		</ul>
-		<select name="limit">
-			<option value="">Keyword</option>
-			<option value="TI">Title</option>
-			<option value="AU">Author</option>
-		</select>
-		<input type="submit" value="Search">
+		<div class="field-wrap-select">
+			<label class="sr" for="searchlimit-bookslocal">limit to</label>
+			<select class="field field-select" id="searchlimit-bookslocal" name="limit">
+				<option value="">Keyword</option>
+				<option value="TI">Title</option>
+				<option value="AU">Author</option>
+			</select>
+		</div>
+		<input class="button button-search" type="submit" value="Search">
 	</form>
 </div>
 <p>Also try:
