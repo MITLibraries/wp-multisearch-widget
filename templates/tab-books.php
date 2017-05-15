@@ -8,41 +8,93 @@
  */
 
 ?>
-<div class="panel"></div>
-<ul id="books-target" class="select-books-target">
-	<li>
-		<label><input type="radio" name="books-target" value="localbooks">at MIT</label>
-	</li>
-	<li>
-		<label><input type="radio" name="books-target" value="worldcat" checked="checked">libraries worldwide</label>
-	</li>
-</ul>
-<p class="also">Also try:
+<div class="panel">
+	<form action="" id="booksearch" method="get" class="form search-bookslocal">
+		<div class="hidden"></div>
+		<label for="searchinput-bookslocal">Search for books, ebooks, audio books, music, and videos</label>
+		<input
+			class="field field-text"
+			id="searchinput-bookslocal"
+			name="search"
+			placeholder="Search books, films, music scores..."
+			type="text">
+		<div class="field-wrap-select">
+			<label class="sr" for="searchlimit-bookslocal">limit to</label>
+			<select class="field field-select" id="searchlimit-bookslocal" name="limit">
+				<option value="">Keyword</option>
+				<option value="TI">Title</option>
+				<option value="AU">Author</option>
+			</select>
+		</div>
+		<ul id="books-target" class="select-books-target">
+			<li><label><input type="radio" name="books-target" value="localbooks" checked="checked">at MIT</label></li>
+			<li><label><input type="radio" name="books-target" value="worldcat">libraries worldwide</label></li>
+		</ul>
+		<input class="button button-search" type="submit" value="Search">
+	</form>
+</div>
+<p>Also try:
 	<a href="/barton">Barton Classic</a>,
 	<a href="/barton-theses">Theses</a>, or
 	<a href="/barton-reserves">Course reserves</a>
 </p>
 <script type="text/javascript">
-function loadBooksForm(choice,panel) {
-	if ( 'localbooks' === choice ) {
-		jQuery(panel).load("<?php echo esc_url( plugin_dir_url( __FILE__ ) ); ?>form_localbooks.html");
-	} else {
-		jQuery(panel).load("<?php echo esc_url( plugin_dir_url( __FILE__ ) ); ?>form_worldcat.html");
+function setBartonSearch(form) {
+	// Set action
+	form.action = 'https://widgets.ebscohost.com/prod/search/';
+
+	// Load hidden fields
+	jQuery(form).find(".hidden")
+		.empty()
+		.append('<input name="direct" value="true" type="hidden">')
+		.append('<input name="authtype" value="ip,guest" type="hidden">')
+		.append('<input name="type" value="0" type="hidden">')
+		.append('<input name="groupid" value="main" type="hidden">')
+		.append('<input name="site" value="eds-live" type="hidden">')
+		.append('<input name="profile" value="eds" type="hidden">')
+		.append('<input name="custid" value="s8978330" type="hidden">')
+		.append('<input name="bquery" type="hidden">')
+		.append('<input name="facet" ' +
+			'           value="Books,eBooks,Audiobooks,Dissertations,MusicScores,Audio,Videos" ' +
+			'           type="hidden">');
+
+	// Build search field
+	form.bquery.value = (form.limit.value + ' ' + form.search.value).trim();
+}
+
+function setWorldcatSearch(form) {
+	// Set action
+	form.action = 'https://mit.worldcat.org/search';
+
+	// Load hidden fields
+	jQuery(form).find(".hidden")
+		.empty()
+		.append('<input type="hidden" name="qt" value="wc_org_mit">')
+		.append('<input type="hidden" name="qt" value="affiliate">')
+		.append('<input type="hidden" name="q">');
+
+	// Build search field
+	var limit = '';
+	if ( form.limit.value !== '' ) {
+		limit = form.limit.value.toLowerCase() + ':';
 	}
+	form.q.value = (limit + form.search.value).trim();
 }
 
 jQuery( document ).ready( function() {
-	// Set default form to Worldcat
-	var btarget = jQuery("#books-target input[name=books-target]:checked").val();
-	var bpanel = jQuery("#search-books .panel");
+	// Watch for form submissions
+	jQuery( 'form#booksearch' ).on( 'submit', function(event) {
+		// Read state of target
+		var target = jQuery("#books-target input[name=books-target]:checked").val();
 
-	// Load default form (set in markup)
-	loadBooksForm( btarget, bpanel );
+		if ( 'worldcat' === target ) {
+			setWorldcatSearch(this);
+		} else {
+			setBartonSearch(this);
+		}
 
-	// Detect target change, swap forms as needed
-	jQuery("#books-target input[name=books-target]").on('change',function() {
-		loadBooksForm( this.value, bpanel );
+		// Log search details
+		logSearch( this );
 	});
-
 });
 </script>

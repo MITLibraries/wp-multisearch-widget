@@ -3,7 +3,7 @@
  * Plugin Name: Multisearch Widget
  * Plugin URI: https://github.com/MITLibraries/wp-multisearch-widget
  * Description: This plugin provides a widget that provides searches against multiple targets.
- * Version: 0.5.0
+ * Version: 0.6.0
  * Author: Matt Bernhardt
  * Author URI: https://github.com/matt-bernhardt
  * License: GPL2
