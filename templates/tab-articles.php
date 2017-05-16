@@ -21,16 +21,24 @@
 		<input name="facet" value="AcademicJournals,Magazines" type="hidden">
 	</div>
 	<label for="searchinput-article">Search journals and articles</label>
-	<input class="field field-text" type="text" id="searchinput-article" name="uquery" placeholder="Search journals and articles...">
-	<div class="field-wrap-select">
-		<label class="sr" for="searchlimit-articles">limit to</label>
-		<select class="field field-select" name="limit" id="searchlimit-articles">
-			<option value="">Keyword</option>
-			<option value="TI ">Title</option>
-			<option value="AU ">Author</option>
-		</select>
+	<div class="wrap-flex">
+		<div class="flex-left">
+			<div class="flex-left-inner">
+				<input class="field field-text" type="text" id="searchinput-article" name="uquery" placeholder="Search journals and articles...">
+				<div class="field-wrap-select">
+					<label class="sr" for="searchlimit-articles">limit to</label>
+					<select class="field field-select" name="limit" id="searchlimit-articles">
+						<option value="">Keyword</option>
+						<option value="TI ">Title</option>
+						<option value="AU ">Author</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="flex-right">
+			<input class="button button-search" type="submit" value="Search">
+		</div>
 	</div>
-	<input class="button button-search" type="submit" value="Search">
 </form>
 <script type="text/javascript">
 	jQuery( document ).ready( function() {
