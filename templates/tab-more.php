@@ -39,6 +39,12 @@
 	<input type="hidden" name="cx" value="016240528703941589557:i7wrbu9cdxu">
 	<input type="hidden" name="ie" value="UTF-8">
 	<label for="searchinput-site">Search the library website</label>
-	<input id="searchinput-site" class="field field-text" type="text" name="q" placeholder="Search our site, location, guides, and support">
-	<input type="submit" class="button button-search" name="sa" value="Search">
+	<div class="wrap-flex">
+		<div class="flex-left">
+			<input id="searchinput-site" class="field field-text" type="text" name="q" placeholder="Search our site, location, guides, and support">
+		</div>
+		<div class="flex-right">
+			<input type="submit" class="button button-search" name="sa" value="Search">
+		</div>
+	</div>
 </form>

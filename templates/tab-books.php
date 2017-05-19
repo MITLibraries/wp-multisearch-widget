@@ -12,28 +12,44 @@
 	<form action="" id="booksearch" method="get" class="form search-bookslocal">
 		<div class="hidden"></div>
 		<label for="searchinput-bookslocal">Search for books, ebooks, audio books, music, and videos</label>
-		<input
-			class="field field-text"
-			id="searchinput-bookslocal"
-			name="search"
-			placeholder="Search books, films, music scores..."
-			type="text">
-		<div class="field-wrap-select">
-			<label class="sr" for="searchlimit-bookslocal">limit to</label>
-			<select class="field field-select" id="searchlimit-bookslocal" name="limit">
-				<option value="">Keyword</option>
-				<option value="TI">Title</option>
-				<option value="AU">Author</option>
-			</select>
+		<div class="wrap-flex">
+			<div class="flex-left">
+				<div class="flex-left-inner">
+					<input
+						class="field field-text"
+						id="searchinput-bookslocal"
+						name="search"
+						placeholder="Search books, films, music scores..."
+						type="text">
+					<div class="field-wrap-select">
+						<label class="sr" for="searchlimit-bookslocal">limit to</label>
+						<select class="field field-select" id="searchlimit-bookslocal" name="limit">
+							<option value="">Keyword</option>
+							<option value="TI">Title</option>
+							<option value="AU">Author</option>
+						</select>
+					</div>
+				</div>
+				<ul id="books-target" class="select-books-target">
+					<li>
+						<label>
+							<input type="radio" name="books-target" value="localbooks" checked="checked">at MIT
+						</label>
+					</li>
+					<li>
+						<label>
+							<input type="radio" name="books-target" value="worldcat">libraries worldwide
+						</label>
+					</li>
+				</ul>
+			</div>
+			<div class="flex-right">
+				<input class="button button-search" type="submit" value="Search">
+			</div>
 		</div>
-		<ul id="books-target" class="select-books-target">
-			<li><label><input type="radio" name="books-target" value="localbooks" checked="checked">at MIT</label></li>
-			<li><label><input type="radio" name="books-target" value="worldcat">libraries worldwide</label></li>
-		</ul>
-		<input class="button button-search" type="submit" value="Search">
 	</form>
 </div>
-<p>Also try:
+<p class="also">Also try:
 	<a href="/barton">Barton Classic</a>,
 	<a href="/barton-theses">Theses</a>, or
 	<a href="/barton-reserves">Course reserves</a>
