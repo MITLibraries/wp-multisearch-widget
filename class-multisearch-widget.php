@@ -69,13 +69,15 @@ class Multisearch_Widget extends \WP_Widget {
 		include( 'templates/form_nojs.html' );
 		echo '</noscript>';
 		echo '<div id="multisearch" class="wrap-search nojs">';
-		echo '<h2 class="sr">Search the MIT libraries</h2>
+		echo '<nav aria-labelledby="search-widget-header">
+			<h2 id="search-widget-header" class="sr">Search the MIT libraries</h2>
 			<ul>
 			<li><a href="#search-all"><span>All</span></a></li>
 			<li><a href="#search-books"><span>Books + media</span></a></li>
 			<li><a href="#search-articles"><span>Journals + articles</span></a></li>
 			<li><a href="#search-more"><span>More...</span></a></li>
-			</ul>';
+			</ul>
+			</nav>';
 		echo '<div id="search-all">';
 		include( 'templates/tab-all.php' );
 		echo '</div>';
