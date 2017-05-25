@@ -27,6 +27,7 @@
 		</ul>
 	</div>
 	<div class="col col-3">
+		<h3 class="sr">Get help from a librarian</h3>
 		<p class="wrap-askus">
 			<a class="askus-link" href="https://libraries.mit.edu/ask">
 				<span class="askus-name">Ask Us</span> 
