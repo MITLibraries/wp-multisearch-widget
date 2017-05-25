@@ -69,7 +69,8 @@ class Multisearch_Widget extends \WP_Widget {
 		include( 'templates/form_nojs.html' );
 		echo '</noscript>';
 		echo '<div id="multisearch" class="wrap-search nojs">';
-		echo '<ul>
+		echo '<h2 class="sr">Search the MIT libraries</h2>
+			<ul>
 			<li><a href="#search-all"><span>All</span></a></li>
 			<li><a href="#search-books"><span>Books + media</span></a></li>
 			<li><a href="#search-articles"><span>Journals + articles</span></a></li>
