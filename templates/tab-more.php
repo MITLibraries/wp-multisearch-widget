@@ -27,6 +27,7 @@
 		</ul>
 	</div>
 	<div class="col col-3">
+		<h3 class="sr">Get help from a librarian</h3>
 		<p class="wrap-askus">
 			<a class="askus-link" href="https://libraries.mit.edu/ask">
 				<span class="askus-name">Ask Us</span> 
@@ -38,7 +39,7 @@
 <form class="form search-site" action="https://www.google.com/cse" method="get" data-target="google">
 	<input type="hidden" name="cx" value="016240528703941589557:i7wrbu9cdxu">
 	<input type="hidden" name="ie" value="UTF-8">
-	<label for="searchinput-site">Search the library website</label>
+	<h3><label for="searchinput-site">Search the library website</label></h3>
 	<div class="wrap-flex">
 		<div class="flex-left">
 			<input id="searchinput-site" class="field field-text" type="text" name="q" placeholder="Search our site, location, guides, and support">
