@@ -70,7 +70,7 @@ class Multisearch_Widget extends \WP_Widget {
 		echo '</noscript>';
 		echo '<div id="multisearch" class="wrap-search nojs">';
 		echo '<h2 id="searchtabsheader" class="sr">Search the MIT libraries</h2>
-			<ul id="search_tabs_nav" role="navigation" aria-labelledby="searchtabsheader">
+			<ul id="search_tabs_nav" role="tablist" aria-labelledby="searchtabsheader">
 			<li><a href="#search-all"><span>All</span></a></li>
 			<li><a href="#search-books"><span>Books + media</span></a></li>
 			<li><a href="#search-articles"><span>Journals + articles</span></a></li>
