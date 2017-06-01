@@ -68,7 +68,7 @@ class Multisearch_Widget extends \WP_Widget {
 		echo '<noscript><p>It appears that your browser does not support javascript.</p>';
 		include( 'templates/form_nojs.html' );
 		echo '</noscript>';
-		echo '<div id="multisearch" class="wrap-search nojs">';
+		echo '<div id="multisearch" class="' . esc_attr( $this->widgetClasses( $instance ) ) . ' nojs">';
 		echo '<h2 id="searchtabsheader" class="sr">Search the MIT libraries</h2>
 			<ul id="search_tabs_nav" role="navigation" aria-labelledby="searchtabsheader">
 			<li><a href="#search-all"><span>All</span></a></li>
@@ -88,6 +88,23 @@ class Multisearch_Widget extends \WP_Widget {
 		echo '<div id="search-more">';
 		include( 'templates/tab-more.php' );
 		echo '</div>';
+		if ( $instance['banner_text'] ) {
+			$allowed = array(
+				'a' => array(
+					'class' => array(),
+					'href' => array(),
+					'style' => array(),
+				),
+				'p' => array(
+					'class' => array(),
+					'style' => array(),
+				),
+				'style' => array(),
+			);
+			echo '<div class="wrap-banner-text no-js-hidden">';
+			echo wp_kses( $instance['banner_text'], $allowed );
+			echo '</div>';
+		}
 		echo '</div>';
 
 		// Google analytics script (this has to be here so we can pull GA property from server).
@@ -111,6 +128,7 @@ class Multisearch_Widget extends \WP_Widget {
 	 */
 	public function form( $instance ) {
 		$ga_property = $instance['ga_property'];
+		$banner_text = $instance['banner_text'];
 		?>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'ga_property' ) ); ?>">
@@ -122,6 +140,19 @@ class Multisearch_Widget extends \WP_Widget {
 				type="text"
 				name="<?php echo esc_attr( $this->get_field_name( 'ga_property' ) ); ?>"
 				value="<?php echo esc_html( $ga_property ); ?>">
+		</p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'banner_text' ) ); ?>">
+				<?php esc_attr_e( 'Banner Text (limited HTML allowed)' ); ?>
+			</label>
+			<textarea
+				class="widefat"
+				id="<?php echo esc_attr( $this->get_field_id( 'banner_text' ) ); ?>"
+				type="text"
+				rows="5"
+				name="<?php echo esc_attr( $this->get_field_name( 'banner_text' ) ); ?>"><?php
+				echo esc_html( $banner_text );
+			?></textarea>
 		</p>
 		<?php
 	}
@@ -137,6 +168,21 @@ class Multisearch_Widget extends \WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		$instance['ga_property'] = $new_instance['ga_property'];
+		$instance['banner_text'] = $new_instance['banner_text'];
 		return $instance;
+	}
+
+	/**
+	 * The classes applied to the widget depend on if the banner_text property
+	 * is set.
+	 *
+	 * @param array $instance The widget being rendered.
+	 */
+	private function widgetClasses( $instance ) {
+		$class = 'wrap-search';
+		if ( $instance['banner_text'] ) {
+			$class = 'wrap-search-banner';
+		}
+		return $class;
 	}
 }
