@@ -71,21 +71,21 @@ class Multisearch_Widget extends \WP_Widget {
 		echo '<div id="multisearch" class="wrap-search nojs">';
 		echo '<h2 id="searchtabsheader" class="sr">Search the MIT libraries</h2>
 			<ul id="search_tabs_nav" role="tablist" aria-labelledby="searchtabsheader">
-			<li><a role="tab" href="#search-all"><span>All</span></a></li>
-			<li><a role="tab" href="#search-books"><span>Books + media</span></a></li>
-			<li><a role="tab" href="#search-articles"><span>Journals + articles</span></a></li>
-			<li><a role="tab" href="#search-more"><span>More...</span></a></li>
+			<li><a id="tab-all" role="tab" aria-controls="panel-all" href="#search-all"><span>All</span></a></li>
+			<li><a id="tab-books" role="tab" aria-controls="panel-books" href="#search-books"><span>Books + media</span></a></li>
+			<li><a id="tab-articles" role="tab" aria-controls="panel-articles" href="#search-articles"><span>Journals + articles</span></a></li>
+			<li><a id="tab-more" role="tab" aria-controls="panel-more" href="#search-more"><span>More...</span></a></li>
 			</ul>';
-		echo '<div id="search-all" role="tabpanel">';
+		echo '<div id="search-all" role="tabpanel" aria-labelledby="tab-all">';
 		include( 'templates/tab-all.php' );
 		echo '</div>';
-		echo '<div id="search-books" role="tabpanel">';
+		echo '<div id="search-books" role="tabpanel" aria-labelledby="tab-books">';
 		include( 'templates/tab-books.php' );
 		echo '</div>';
-		echo '<div id="search-articles" role="tabpanel">';
+		echo '<div id="search-articles" role="tabpanel" aria-labelledby="tab-articles">';
 		include( 'templates/tab-articles.php' );
 		echo '</div>';
-		echo '<div id="search-more" role="tabpanel">';
+		echo '<div id="search-more" role="tabpanel" aria-labelledby="tab-more">';
 		include( 'templates/tab-more.php' );
 		echo '</div>';
 		echo '</div>';

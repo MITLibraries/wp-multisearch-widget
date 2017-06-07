@@ -7,7 +7,7 @@
  */
 
 ?>
-
+<h3 class="sr">All panel</h3>
 <form class="form search-bento" action="https://lib.mit.edu/search/bento" method="get" data-target="bento">
 	<label for="searchinput-bento">Search the libraries</label>
 	<div class="wrap-flex">

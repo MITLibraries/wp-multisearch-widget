@@ -36,8 +36,8 @@ jQuery( document ).ready(function() {
 
 
 	$('#search_tabs_nav a').click(function(e) {
-		$('a .current').remove();;
-		$(this).prepend("<span class='sr current'>Current: </span>");;
+		$('a .current').remove();
+		$(this).prepend("<span class='sr current'>Current: </span>");
 	});
 
 	jQuery( "#multisearch form" ).on( 'submit', function() {
