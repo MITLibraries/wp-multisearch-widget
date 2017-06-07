@@ -24,7 +24,12 @@
 	<div class="wrap-flex">
 		<div class="flex-left">
 			<div class="flex-left-inner">
-				<input class="field field-text" type="text" id="searchinput-article" name="uquery" placeholder="Search journals and articles...">
+				<input 
+					class="field field-text" 
+					type="text" 
+					id="searchinput-article" 
+					name="uquery" 
+					placeholder="ex. journal of the american medical association, nuclear engineering">
 				<div class="field-wrap-select">
 					<label class="sr" for="searchlimit-articles">limit to</label>
 					<select class="field field-select" name="limit" id="searchlimit-articles">

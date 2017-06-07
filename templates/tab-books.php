@@ -11,7 +11,7 @@
 <div class="panel">
 	<form action="" id="booksearch" method="get" class="form search-bookslocal">
 		<div class="hidden"></div>
-		<label for="searchinput-bookslocal">Search for books, ebooks, audio books, music, and videos</label>
+		<label for="searchinput-bookslocal">Search for books, ebooks, audiobooks, music, and videos</label>
 		<div class="wrap-flex">
 			<div class="flex-left">
 				<div class="flex-left-inner">
@@ -19,7 +19,7 @@
 						class="field field-text"
 						id="searchinput-bookslocal"
 						name="search"
-						placeholder="Search books, films, music scores..."
+						placeholder="ex. carbon nanotubes, game design"
 						type="text">
 					<div class="field-wrap-select">
 						<label class="sr" for="searchlimit-bookslocal">limit to</label>
