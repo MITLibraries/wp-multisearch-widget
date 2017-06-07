@@ -8,6 +8,7 @@
  */
 
 ?>
+<h3 class="sr">Books and media panel</h3>
 <div class="panel">
 	<form action="" id="booksearch" method="get" class="form search-bookslocal">
 		<div class="hidden"></div>

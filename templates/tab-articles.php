@@ -8,6 +8,7 @@
  */
 
 ?>
+<h3 class="sr">Journals and Articles panel</h3>
 <form class="form search-articles" action="https://widgets.ebscohost.com/prod/search/" id="edssearch" method="get" data-target="eds">
 	<div class="hidden">
 		<input name="direct" value="true" type="hidden">

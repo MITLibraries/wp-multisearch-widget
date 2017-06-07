@@ -7,7 +7,7 @@
  */
 
 ?>
-
+<h3 class="sr">More panel</h3>
 <div class="wrap-3cols">
 	<div class="col col-1">
 		<h3 class="header-col">Looking for something else?</h3>
