@@ -123,6 +123,9 @@
 	color: #fff;
 	text-decoration: none;
 }
+.r-tabs .button-search:active {
+	border: 1px solid #aaa;
+}
 .r-tabs .select-books-target li {
 	display: inline-block;
 	margin-bottom: .5rem;
