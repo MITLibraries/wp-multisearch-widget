@@ -13,9 +13,9 @@
 		<h3 class="header-col">Looking for something else?</h3>
 		<ul>
 			<li><a href="/barton-reserves">Course reserves</a></li>
-			<li><a href="/barton-theses">Theses</a></li>
+			<li><a href="/barton-theses">MIT Theses</a></li>
 			<li><a href="https://dspace.mit.edu">DSpace@MIT</a></li>
-			<li><a href="http://libraries.mit.edu/experts/">Subject guides</a></li>
+			<li><a href="http://libraries.mit.edu/experts/">Search tools by subject</a></li>
 			<li><a href="/search">More search options: images, data, etc.</a></li>
 		</ul>
 	</div>
@@ -42,7 +42,7 @@
 	<h3><label for="searchinput-site">Search the library website</label></h3>
 	<div class="wrap-flex">
 		<div class="flex-left">
-			<input id="searchinput-site" class="field field-text" type="text" name="q" placeholder="Search our site, location, guides, and support">
+			<input id="searchinput-site" class="field field-text" type="text" name="q" placeholder="ex. hours">
 		</div>
 		<div class="flex-right">
 			<input type="submit" class="button button-search" name="sa" value="Search">

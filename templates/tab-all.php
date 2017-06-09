@@ -12,7 +12,12 @@
 	<label for="searchinput-bento">Search the libraries</label>
 	<div class="wrap-flex">
 		<div class="flex-left">
-			<input class="field field-text" type="text" id="searchinput-bento" name="q" placeholder="Search books, journal articles, films...">
+			<input 
+				class="field field-text" 
+				type="text" 
+				id="searchinput-bento" 
+				name="q" 
+				placeholder="ex. carbon nanotubes, journal of the american medical association">
 		</div>
 		<div class="flex-right">
 			<input class="button button-search" type="submit" value="Search">
