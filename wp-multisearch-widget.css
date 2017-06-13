@@ -208,7 +208,7 @@
 	}
 	.r-tabs .wrap-flex {
 		display: flex;
-		align-items: baseline;
+		align-items: flex-start;
 	}
 	.r-tabs .flex-left {
 		flex: 3;
