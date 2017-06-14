@@ -11,7 +11,7 @@ function logSearch(element) {
 	search.type = jQuery( element ).find( "select" ).find(":selected").text();
 
 	// Send search details to analytics
-	discovery('send', {
+	ga('discovery.send', {
 		hitType: 'event',
 		eventCategory: 'Wordpress',
 		eventAction: 'Search',
