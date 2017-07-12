@@ -20,6 +20,25 @@ function logSearch(element) {
 
 };
 
+function preventSearch(textField,button) {
+
+	// By default submit is disabled 
+	$( button ).prop('disabled', true);
+
+	$( textField ).keyup(function() {
+		if($(this).val().trim().length !=0 ) {			
+			$( button ).prop('disabled', false); 
+		} else {
+			$( textField ).focus();		
+		    $( button ).prop('disabled', true);
+		    e.preventDefault();
+		}
+		
+	});
+
+}
+
+
 jQuery( document ).ready(function() {
 	var $tabs = $('#multisearch');
 
@@ -44,4 +63,16 @@ jQuery( document ).ready(function() {
 	jQuery( "#multisearch form" ).on( 'submit', function() {
 		logSearch( this );
 	});
+
+	// prevent submission until text field is not empty 
+	preventSearch( '#searchinput-bento', '.search-bento .button-search');
+
+	preventSearch( '#searchinput-bookslocal', 'form#booksearch .button-search');
+
+	preventSearch( '#searchinput-article', 'form#edssearch .button-search');
+
+	preventSearch( '#searchinput-site', '.search-site .button-search');
+
+
 });
+
