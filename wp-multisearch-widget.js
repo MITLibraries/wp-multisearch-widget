@@ -25,6 +25,11 @@ function preventSearch(textField,button) {
 	// By default submit is disabled 
 	$( button ).prop('disabled', true);
 
+	// if has a value from previous search, activate
+	if($( textField ).val().trim().length !=0 ) {			
+			$( button ).prop('disabled', false); 
+	}		
+
 	$( textField ).keyup(function() {
 		if($(this).val().trim().length !=0 ) {			
 			$( button ).prop('disabled', false); 
