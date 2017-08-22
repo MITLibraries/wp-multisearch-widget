@@ -19,6 +19,8 @@ engines:
         enabled: false
       PSR1 Files SideEffects FoundWithSymbols:
         enabled: false
+      PSR1 Methods CamelCapsMethodName NotCamelCaps:
+        enabled: false
       PSR2 Classes ClassDeclaration OpenBraceNewLine:
         enabled: false
       PSR2 ControlStructures ControlStructureSpacing SpacingAfterOpenBrace:
@@ -49,6 +51,8 @@ engines:
     enabled: true
     checks:
       Controversial/CamelCaseClassName:
+        enabled: false
+      Controversial/CamelCaseMethodName:
         enabled: false
       Controversial/CamelCaseParameterName:
         enabled: false
