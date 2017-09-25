@@ -25,6 +25,53 @@ class Multisearch_Widget extends \WP_Widget {
 	}
 
 	/**
+	 * Render_js() builds the script tag used by the search interface.
+	 *
+	 * @param array $instance See WP_Widget in Developer documentation.
+	 * @link https://developer.wordpress.org/reference/classes/wp_widget/
+	 */
+	private function render_js( $instance ) {
+		/**
+		 * This should be an external JS file, but I'm not sure how to get instance values from Wordpress into
+		 * a JS file without passing it through the PHP interpreter.
+		 */
+		echo "<script type='text/javascript'>";
+		if ( $instance['linked_domains'] ) {
+			$domains = explode( ',', $instance['linked_domains'] );
+			echo '// function to check linked domains on form submit
+				function hasLinkedFormAction( element, index, array ) { return this.includes( element ) }
+				// Linked domains as a variable for consulting later
+				var linked_domains = [';
+			foreach ( $domains as &$item ) {
+				echo "'" . esc_attr( trim( $item ) ) . "',";
+			}
+			echo "];
+				// Decorate submitted forms
+				jQuery('form').submit(function() {
+					if( linked_domains.some( hasLinkedFormAction, this.action ) ) {
+						ga('discovery.linker:decorate', this );
+					}
+				});";
+		}
+		echo "// Register analytics target
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create',
+				'" . esc_attr( $instance['ga_property'] ) . "',
+				'auto',
+				{'name':'discovery', 'allowLinker': true}
+			);";
+		if ( $instance['linked_domains'] ) {
+			echo "ga('discovery.require', 'linker');
+				ga('discovery.linker:autoLink', linked_domains);\n";
+		}
+		echo "ga('discovery.send', 'pageview');
+		</script>";
+	}
+
+	/**
 	 * Widget() builds the output
 	 *
 	 * @param array $args See WP_Widget in Developer documentation.
@@ -107,15 +154,8 @@ class Multisearch_Widget extends \WP_Widget {
 		}
 		echo '</div>';
 
-		// Google analytics script (this has to be here so we can pull GA property from server).
-		echo "<script type='text/javascript'>
-			// Register analytics target
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-			ga('create', '" . esc_attr( $instance['ga_property'] ) . "', 'auto', {'name':'discovery'});
-		</script>";
+		// Render the script tag for this widget.
+		$this->render_js( $instance );
 	}
 
 	/**
@@ -128,6 +168,7 @@ class Multisearch_Widget extends \WP_Widget {
 	public function form( $instance ) {
 		$ga_property = $instance['ga_property'];
 		$banner_text = $instance['banner_text'];
+		$linked_domains = $instance['linked_domains'];
 		?>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'ga_property' ) ); ?>">
@@ -139,6 +180,17 @@ class Multisearch_Widget extends \WP_Widget {
 				type="text"
 				name="<?php echo esc_attr( $this->get_field_name( 'ga_property' ) ); ?>"
 				value="<?php echo esc_html( $ga_property ); ?>">
+		</p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'linked_domains' ) ); ?>">
+				<?php esc_attr_e( 'Linked Domains' ); ?>
+			</label>
+			<input
+				class="widefat"
+				id="<?php echo esc_attr( $this->get_field_id( 'linked_domains' ) ); ?>"
+				type="text"
+				name="<?php echo esc_attr( $this->get_field_name( 'linked_domains' ) ); ?>"
+				value="<?php echo esc_html( $linked_domains ); ?>">
 		</p>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'banner_text' ) ); ?>">
@@ -168,6 +220,7 @@ class Multisearch_Widget extends \WP_Widget {
 		$instance = $old_instance;
 		$instance['ga_property'] = $new_instance['ga_property'];
 		$instance['banner_text'] = $new_instance['banner_text'];
+		$instance['linked_domains'] = $new_instance['linked_domains'];
 		return $instance;
 	}
 
