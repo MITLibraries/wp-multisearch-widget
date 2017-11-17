@@ -10,6 +10,7 @@
 .wrap-search-banner {
 	background-color: #338bc5;
 	background-color: linear-gradient(45deg,#5889c2 0,#3fa0c9 100%);
+	color: #111;
 	padding: 30px 3% 60px 3%;
 	position: relative;
 }
