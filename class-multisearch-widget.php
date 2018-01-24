@@ -233,7 +233,7 @@ class Multisearch_Widget extends \WP_Widget {
 	private function widgetClasses( $instance ) {
 		$class = 'wrap-search';
 		if ( $instance['banner_text'] ) {
-			$class = 'wrap-search-banner';
+			$class = 'wrap-search banner';
 		}
 		return $class;
 	}
