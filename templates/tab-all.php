@@ -24,3 +24,4 @@
 		</div>
 	</div>
 </form>
+<p class="also search-all"><a href="https://libraries.mit.edu/bartonplus-advanced">Advanced search</a></p>
