@@ -6,12 +6,12 @@
 }
 .wrap-search, 
 .r-tabs {
-	background-color: #338bc5;
+	background-color: #333;
 	background-color: linear-gradient(45deg,#5889c2 0,#3fa0c9 100%);
 	padding: 30px 3%;
 }
 .wrap-search.banner {
-	background-color: #338bc5;
+	background-color: #333;
 	background-color: linear-gradient(45deg,#5889c2 0,#3fa0c9 100%);
 	padding: 30px 3% 60px 3%;
 	position: relative;
@@ -36,7 +36,7 @@
 	background: #ddd url('i/down-caret.png') no-repeat 97% center;  
 	background-color: rgba(255,255,255,.3);
 	font-weight: 600;
-	border-bottom: 2px solid #338bc5;
+	border-bottom: 2px solid #333;
 }
 .r-tabs-accordion-title.r-tabs-state-active .r-tabs-anchor {
 	background-color: #fff;
@@ -82,7 +82,7 @@
 	font-size: 1rem;	
 }
 .r-tabs .field-text:focus {
-	border: 1px solid #338bc5;
+	border: 1px solid #0000FF;
 }
 .r-tabs .field-wrap-select {
 	display: block;
@@ -113,18 +113,18 @@
 .r-tabs .button-search {
 	-webkit-appearance: none;
 	transition: background-color .25s, border .25s;
-	border: 1px solid #338bc5;
+	border: 1px solid #000;
 	border-radius: 3px;
 	padding: 5px 10px;
-	background-color: #338bc5;
+	background-color: #000;
 	background-image: none;
 	font-size: 1rem;
 	color: #fff;
 }
 .r-tabs .button-search:hover, 
 .r-tabs .button-search:focus {
-	border-color: #0EA6EC;
-	background-color: #0EA6EC;
+	border-color: #0000FF;
+	background-color: #0000FF;
 	background-image: none;
 	color: #fff;
 	text-decoration: none;
