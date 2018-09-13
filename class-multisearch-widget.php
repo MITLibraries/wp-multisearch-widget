@@ -96,18 +96,19 @@ class Multisearch_Widget extends \WP_Widget {
 			'multisearch-js',
 			plugin_dir_url( __FILE__ ) . 'wp-multisearch-widget.js',
 			array( 'responsivetabs-js' ),
-			'1.1.1',
+			'1.3.0',
 			false
 		);
 		// Finally, we enquey only this plugin's javascript (which brings everything else in).
 		wp_enqueue_script( 'multisearch-js' );
 
 		// Register / enqueue styles.
-		wp_register_style( 'responsivetabs-css', plugin_dir_url( __FILE__ ) . 'libs/responsive-tabs.css' );
+		wp_register_style( 'responsivetabs-css', plugin_dir_url( __FILE__ ) . 'libs/responsive-tabs.css', '', '1.6.1' );
 		wp_register_style(
 			'multisearch-tabs',
 			plugin_dir_url( __FILE__ ) . 'wp-multisearch-widget.css',
-			array( 'responsivetabs-css' )
+			array( 'responsivetabs-css' ),
+			'1.3.0'
 		);
 		wp_enqueue_style( 'multisearch-tabs' );
 
