@@ -81,21 +81,20 @@ function setBartonSearch(form) {
 
 function setWorldcatSearch(form) {
 	// Set action
-	form.action = 'https://mit.worldcat.org/search';
+	form.action = 'https://mit.on.worldcat.org/search';
 
 	// Load hidden fields
 	jQuery(form).find(".hidden")
 		.empty()
-		.append('<input type="hidden" name="qt" value="wc_org_mit">')
-		.append('<input type="hidden" name="qt" value="affiliate">')
-		.append('<input type="hidden" name="q">');
+		.append('<input type="hidden" name="queryString">');
 
-	// Build search field
-	var limit = '';
+	// Transfer search string to actual field
+	form.queryString.value = form.search.value.trim();
+
+	// Build search field with title/author syntax
 	if ( form.limit.value !== '' ) {
-		limit = form.limit.value.toLowerCase() + ':';
+		form.queryString.value = form.limit.value.toLowerCase() + ':(' + form.queryString.value + ')';
 	}
-	form.q.value = (limit + form.search.value).trim();
 }
 
 jQuery( document ).ready( function() {
