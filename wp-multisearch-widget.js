@@ -30,7 +30,7 @@ function preventSearch(textField,button) {
 			$( button ).prop('disabled', false); 
 	}		
 
-	$( textField ).on('keyup input', function() {
+	$( textField ).on('keyup input', function(e) {
 		if($(this).val().trim().length !=0 ) {			
 			$( button ).prop('disabled', false); 
 		} else {

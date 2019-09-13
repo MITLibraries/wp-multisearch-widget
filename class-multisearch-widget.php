@@ -96,7 +96,7 @@ class Multisearch_Widget extends \WP_Widget {
 			'multisearch-js',
 			plugin_dir_url( __FILE__ ) . 'wp-multisearch-widget.js',
 			array( 'responsivetabs-js' ),
-			'1.3.0',
+			'1.4.1',
 			false
 		);
 		// Finally, we enquey only this plugin's javascript (which brings everything else in).
