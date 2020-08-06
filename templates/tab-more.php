@@ -15,6 +15,7 @@
 			<li><a href="/barton-reserves">Course reserves</a></li>
 			<li><a href="/barton-theses">MIT Theses</a></li>
 			<li><a href="https://dspace.mit.edu">DSpace@MIT</a></li>
+			<li><a href="https://archivesspace.mit.edu/">ArchivesSpace</a></li>
 			<li><a href="http://libraries.mit.edu/experts/">Search tools by subject</a></li>
 			<li><a href="/search">More search options: images, data, etc.</a></li>
 		</ul>
@@ -22,7 +23,7 @@
 	<div class="col col-2">
 		<h3 class="header-col">Other useful tools</h3>
 		<ul>
-			<li><a href="/libx">LibX browser plug-in</a></li>
+			<li><a href="https://libraries.mit.edu/worldcat">WorldCat</a></li>
 			<li><a href="http://libguides.mit.edu/google/googlescholar">Google Scholar for MIT</a></li>
 		</ul>
 	</div>
