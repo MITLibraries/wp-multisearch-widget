@@ -35,40 +35,21 @@ class Multisearch_Widget extends \WP_Widget {
 		 * This should be an external JS file, but I'm not sure how to get instance values from Wordpress into
 		 * a JS file without passing it through the PHP interpreter.
 		 */
-		echo "<script type='text/javascript'>";
-		if ( $instance['linked_domains'] ) {
-			$domains = explode( ',', $instance['linked_domains'] );
-			echo '// function to check linked domains on form submit
-				function hasLinkedFormAction( element, index, array ) { return this.includes( element ) }
-				// Linked domains as a variable for consulting later
-				var linked_domains = [';
-			foreach ( $domains as &$item ) {
-				echo "'" . esc_attr( trim( $item ) ) . "',";
-			}
-			echo "];
-				// Decorate submitted forms
-				jQuery('form').submit(function() {
-					if( linked_domains.some( hasLinkedFormAction, this.action ) ) {
-						ga('discovery.linker:decorate', this );
-					}
-				});";
-		}
-		echo "// Register analytics target
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-			ga('create',
-				'" . esc_attr( $instance['ga_property'] ) . "',
-				'auto',
-				{'name':'discovery', 'allowLinker': true}
-			);";
-		if ( $instance['linked_domains'] ) {
-			echo "ga('discovery.require', 'linker');
-				ga('discovery.linker:autoLink', linked_domains);\n";
-		}
-		echo "ga('discovery.send', 'pageview');
-		</script>";
+		echo "<!-- Matomo -->
+		<script type='text/javascript'>
+		  var _paq = window._paq || [];
+		  /* tracker methods like 'setCustomDimension' should be called before 'trackPageView' */
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+		    var u='//analytics-stage.mitlib.net/';
+		    _paq.push(['setTrackerUrl', u+'matomo.php']);
+		    _paq.push(['setSiteId', '1']);
+		    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
+		<!-- End Matomo Code -->";
 	}
 
 	/**
