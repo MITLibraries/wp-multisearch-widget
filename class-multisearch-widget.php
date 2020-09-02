@@ -39,6 +39,8 @@ class Multisearch_Widget extends \WP_Widget {
 		<script type='text/javascript'>
 		  var _paq = window._paq || [];
 		  /* tracker methods like 'setCustomDimension' should be called before 'trackPageView' */
+		  // Enable the use of navigator.sendBeacon() for improved accuracy
+		  _paq.push(['alwaysUseSendBeacon'])
 		  _paq.push(['trackPageView']);
 		  _paq.push(['enableLinkTracking']);
 		  (function() {
