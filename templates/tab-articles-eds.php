@@ -1,7 +1,8 @@
 <?php
 /**
- * The search tab for journals and articles - which will switch between EDS
- * and Vera forms as the user changes the input[name=target] control.
+ * The "EDS variant" of the search tab for journals and articles - which will
+ * switch between EDS and Vera forms as the user changes the
+ * input[name=target] control.
  *
  * @package Multisearch Widget
  * @since 0.2.0
@@ -9,7 +10,12 @@
 
 ?>
 <h3 class="sr">Journals and Articles panel</h3>
-<form class="form search-articles" action="https://widgets.ebscohost.com/prod/search/" id="edssearch" method="get" data-target="eds">
+<form
+	class="form search-articles"
+	action="https://widgets.ebscohost.com/prod/search/"
+	id="edssearch"
+	method="get"
+	data-target="eds">
 	<div class="hidden">
 		<input name="direct" value="true" type="hidden">
 		<input name="authtype" value="ip,guest" type="hidden">

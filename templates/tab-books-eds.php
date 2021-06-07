@@ -1,7 +1,8 @@
 <?php
 /**
- * The search tab for books and media - which will switch between Barton and
- * Worldcat forms as the user changes the input[name=target] control.
+ * The "EDS variant" of the search tab for books and media - which will switch
+ * between Barton and Worldcat forms as the user changes the
+ * input[name=target] control.
  *
  * @package Multisearch Widget
  * @since 0.2.0

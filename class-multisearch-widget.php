@@ -79,6 +79,20 @@ class Multisearch_Widget extends \WP_Widget {
 	 * @link https://developer.wordpress.org/reference/classes/wp_widget/
 	 */
 	public function widget( $args, $instance ) {
+		// Identify which templates are needed based on instance variable.
+		$all_template = 'templates/tab-all-eds.php';
+		$books_template = 'templates/tab-books-eds.php';
+		$articles_template = 'templates/tab-articles-eds.php';
+		$articles_tab_name = 'Journals + articles';
+		$more_template = 'templates/tab-more-eds.php';
+		if ( 'alma' == $instance['targets'] ) {
+			$all_template = 'templates/tab-all-alma.php';
+			$books_template = 'templates/tab-books-alma.php';
+			$articles_template = 'templates/tab-articles-alma.php';
+			$articles_tab_name = 'Articles + chapters';
+			$more_template = 'templates/tab-more-alma.php';
+		}
+
 		// Strip initial arguments.
 		$args = null;
 
@@ -119,22 +133,24 @@ class Multisearch_Widget extends \WP_Widget {
 		echo '<div id="multisearch" class="' . esc_attr( $this->widgetClasses( $instance ) ) . ' nojs">';
 		echo '<h2 id="searchtabsheader" class="sr">Search the MIT libraries</h2>
 			<ul id="search_tabs_nav" aria-labelledby="searchtabsheader">
-			<li><a id="tab-all" href="#search-all"><span>All</span></a></li>
-			<li><a id="tab-books" href="#search-books"><span>Books + media</span></a></li>
-			<li><a id="tab-articles" href="#search-articles"><span>Journals + articles</span></a></li>
-			<li><a id="tab-more" href="#search-more"><span>More...</span></a></li>
+				<li><a id="tab-all" href="#search-all"><span>All</span></a></li>
+				<li><a id="tab-books" href="#search-books"><span>Books + media</span></a></li>
+				<li><a id="tab-articles" href="#search-articles"><span>'
+				. esc_html( $articles_tab_name )
+				. '</span></a></li>
+				<li><a id="tab-more" href="#search-more"><span>More...</span></a></li>
 			</ul>';
 		echo '<div id="search-all" aria-labelledby="tab-all">';
-		include( 'templates/tab-all.php' );
+			include( $all_template );
 		echo '</div>';
 		echo '<div id="search-books" aria-labelledby="tab-books">';
-		include( 'templates/tab-books.php' );
+			include( $books_template );
 		echo '</div>';
 		echo '<div id="search-articles" aria-labelledby="tab-articles">';
-		include( 'templates/tab-articles.php' );
+			include( $articles_template );
 		echo '</div>';
 		echo '<div id="search-more" aria-labelledby="tab-more">';
-		include( 'templates/tab-more.php' );
+			include( $more_template );
 		echo '</div>';
 		if ( $instance['banner_text'] ) {
 			$allowed = array(
@@ -170,6 +186,14 @@ class Multisearch_Widget extends \WP_Widget {
 		$ga_property = $instance['ga_property'];
 		$banner_text = $instance['banner_text'];
 		$linked_domains = $instance['linked_domains'];
+		$targets = $instance['targets'];
+		if ( '' == $instance['targets'] ) {
+			$targets = 'eds';
+		}
+		$bento_url = $instance['bento_url'];
+		if ( '' == $instance['bento_url'] ) {
+			$bento_url = 'https://lib.mit.edu/';
+		}
 		?>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'ga_property' ) ); ?>">
@@ -206,6 +230,50 @@ class Multisearch_Widget extends \WP_Widget {
 				echo esc_html( $banner_text );
 			?></textarea>
 		</p>
+		<p>Which set of search targets should be shown?</p>
+		<ul>
+			<li>
+				<label>
+					<input
+						type="radio"
+						name="<?php echo esc_attr( $this->get_field_name( 'targets' ) ); ?>"
+						value="eds"
+						<?php
+						if ( 'eds' == $targets ) {
+							echo "checked='checked'";
+						}
+						?>
+					>
+					EDS and Barton
+				</label>
+			</li>
+			<li>
+				<label>
+					<input
+						type="radio"
+						name="<?php echo esc_attr( $this->get_field_name( 'targets' ) ); ?>"
+						value="alma"
+						<?php
+						if ( 'alma' == $targets ) {
+							echo "checked='checked'";
+						}
+						?>
+					>
+					Alma and Primo
+				</label>
+			</li>
+		</ul>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'bento_url' ) ); ?>">
+				<?php esc_attr_e( 'Bento URL' ); ?> (formatted like "https://lib.mit.edu/")
+			</label>
+			<input
+				class="widefat"
+				id="<?php echo esc_attr( $this->get_field_id( 'bento_url' ) ); ?>"
+				type="text"
+				name="<?php echo esc_attr( $this->get_field_name( 'bento_url' ) ); ?>"
+				value="<?php echo esc_html( $bento_url ); ?>">
+		</p>
 		<?php
 	}
 
@@ -222,6 +290,8 @@ class Multisearch_Widget extends \WP_Widget {
 		$instance['ga_property'] = $new_instance['ga_property'];
 		$instance['banner_text'] = $new_instance['banner_text'];
 		$instance['linked_domains'] = $new_instance['linked_domains'];
+		$instance['targets'] = $new_instance['targets'];
+		$instance['bento_url'] = $new_instance['bento_url'];
 		return $instance;
 	}
 
