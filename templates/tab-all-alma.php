@@ -29,5 +29,5 @@
 	</div>
 </form>
 <p class="also search-all">
-	<a href="https://mit.primo.exlibrisgroup.com/discovery/search?vid=01MIT_INST:MIT&lang=en">Jump to Primo search</a>
+	<a href="/search-advanced/">Advanced search</a>
 </p>

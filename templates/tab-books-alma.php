@@ -54,8 +54,8 @@
 	</div>
 </form>
 <p class="also">Also search for:
-	<a href="/theses">MIT theses</a> or
-	<a href="/reserves">Course reserves</a>
+	<a href="/search-mit-theses/">MIT theses</a> or
+	<a href="/search-reserves/">Course reserves</a>
 </p>
 <script type="text/javascript">
 function setPrimoSearch(form) {
@@ -67,7 +67,7 @@ function setPrimoSearch(form) {
 		.empty()
 		.append('<input name="vid" value="01MIT_INST:MIT" type="hidden">')
 		.append('<input name="tab" value="all" type="hidden">')
-		.append('<input name="search_scope" value="all" type="hidden">')
+		.append('<input name="search_scope" value="catalog" type="hidden">')
 		.append('<input name="lang" value="en" type="hidden">')
 		.append('<input name="query" type="hidden">');
 

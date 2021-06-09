@@ -20,7 +20,7 @@
 	<div class="hidden">
 		<input type="hidden" name="vid" value="01MIT_INST:MIT">
 		<input type="hidden" name="tab" value="all">
-		<input type="hidden" name="search_scope" value="all">
+		<input type="hidden" name="search_scope" value="cdi">
 		<input type="hidden" name="lang" value="en">
 		<input type="hidden" name="query" id="primoQuery">
 	</div>
@@ -56,9 +56,9 @@
 			// keyword, title, and author searching. So we assemble the search 
 			// string on submit.
 			var searchtype = 'any';
-			if ( this.limit.value == 'TI' ) {
+			if ( this.limit.value.trim() == 'TI' ) {
 				searchtype = 'title';
-			} else if ( this.limit.value == 'AU' ) {
+			} else if ( this.limit.value.trim() == 'AU' ) {
 				searchtype = 'creator';
 			}
 			this.query.value = searchtype + ",contains," + this.search.value.replace(/[,]/g, " ");
@@ -68,6 +68,6 @@
 	});
 </script>
 <p class="also">Also search for:
-	<a href="https://mit.primo.exlibrisgroup.com/discovery/jsearch?vid=01MIT_INST:MIT">Journals</a> or
-	<a href="https://mit.primo.exlibrisgroup.com/discovery/dbsearch?vid=01MIT_INST:MIT">Databases</a>
+	<a href="/search-journals/">Journals</a> or
+	<a href="/search-databases/">Databases</a>
 </p>
