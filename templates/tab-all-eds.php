@@ -1,6 +1,6 @@
 <?php
 /**
- * The search tab for all content - which will search the Bento app.
+ * The "EDS variant" of the search tab for all content - which will search the Bento app.
  *
  * @package Multisearch Widget
  * @since 0.2.0

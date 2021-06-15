@@ -4,6 +4,11 @@
 #multisearch.wrap-search {
 	color: #111;	
 }
+#search-all a,
+#search-books a,
+#search-articles a {
+	text-decoration: underline;
+}
 .wrap-search, 
 .r-tabs {
 	background-color: #333;

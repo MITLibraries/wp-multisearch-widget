@@ -1,6 +1,7 @@
 <?php
 /**
- * The search tab for "more" content - which will search the Google custom engine.
+ * The "EDS variant" of the search tab for "more" content - which will search
+ * the Google custom engine.
  *
  * @package Multisearch Widget
  * @since 0.2.0
