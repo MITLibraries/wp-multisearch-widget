@@ -24,7 +24,9 @@
 		<input type="hidden" name="lang" value="en">
 		<input type="hidden" name="query" id="primoQuery">
 	</div>
-	<label for="searchinput-article">Search journals and articles</label>
+	<label for="searchinput-article">
+		Search articles, book chapters, and more from scholarly journals, newspapers, and online collections
+	</label>
 	<div class="wrap-flex">
 		<div class="flex-left">
 			<div class="flex-left-inner">
