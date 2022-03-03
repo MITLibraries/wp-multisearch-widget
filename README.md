@@ -1,6 +1,5 @@
 # Multisearch Widget
 
-[![Build Status](https://travis-ci.org/MITLibraries/wp-multisearch-widget.svg?branch=master)](https://travis-ci.org/MITLibraries/wp-multisearch-widget)
 [![Code Climate](https://codeclimate.com/github/MITLibraries/wp-multisearch-widget/badges/gpa.svg)](https://codeclimate.com/github/MITLibraries/wp-multisearch-widget)
 [![Issue Count](https://codeclimate.com/github/MITLibraries/wp-multisearch-widget/badges/issue_count.svg)](https://codeclimate.com/github/MITLibraries/wp-multisearch-widget)
 
