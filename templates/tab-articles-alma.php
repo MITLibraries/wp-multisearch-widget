@@ -71,5 +71,5 @@
 </script>
 <p class="also">Also search for:
 	<a href="/search-journals/">Journals</a> or
-	<a href="/search-databases/">Databases</a>
+	<a href="https://libguides.mit.edu/az.php">Databases A-Z</a>
 </p>
